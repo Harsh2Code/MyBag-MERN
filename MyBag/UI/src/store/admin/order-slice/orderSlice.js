@@ -6,13 +6,14 @@ const initialState = {
   isLoading: false,
   error: null,
 };
+const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
 
 // Async thunk to fetch orders from backend
 export const fetchOrders = createAsyncThunk(
   'adminOrders/fetchOrders',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/orders/orders');
+      const response = await axios.get('${backendBaseUrl}/api/admin/orders/orders');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Error fetching orders');
@@ -25,7 +26,7 @@ export const createNewOrder = createAsyncThunk(
   'adminOrders/createNewOrder',
   async (orderData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/shop/order/create', orderData);
+      const response = await axios.post('${backendBaseUrl}/api/shop/order/create', orderData);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Error creating order');
@@ -38,7 +39,7 @@ export const updateOrderStatus = createAsyncThunk(
   'adminOrders/updateOrderStatus',
   async ({ orderId, status }, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(`http://localhost:5000/api/admin/orders/orders/${orderId}/status`, { status });
+      const response = await axios.patch(`${backendBaseUrl}/api/admin/orders/orders/${orderId}/status`, { status });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Error updating order status');
