@@ -34,7 +34,7 @@ export default function ContactUs() {
     setIsSubmitting(true);
     try {
       // Real API call to submit query to backend
-      const response = await fetch('http://localhost:5000/api/queries', {
+      const response = await fetch('${backendBaseUrl}:5000/api/queries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

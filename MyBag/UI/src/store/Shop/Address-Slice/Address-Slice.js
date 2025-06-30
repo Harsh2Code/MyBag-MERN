@@ -6,12 +6,14 @@ const initialState = {
   addressList: [],
 };
 
+const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+
 export const addNewAddress = createAsyncThunk(
   "/addresses/addNewAddress",
   async (formData) => {
     console.log("Sending addNewAddress payload:", formData);
     const response = await axios.post(
-      "http://localhost:5000/api/shop/address/add",
+      "${backendBaseUrl}/api/shop/address/add",
       formData
     );
 
@@ -23,7 +25,7 @@ export const fetchAllAddresses = createAsyncThunk(
   "/addresses/fetchAllAddresses",
   async (userId) => {
     const response = await axios.get(
-      `http://localhost:5000/api/shop/address/get/${userId}`
+      `${backendBaseUrl}/api/shop/address/get/${userId}`
     );
     console.log("fetchAllAddresses response:", response.data);
     return response.data;
@@ -34,7 +36,7 @@ export const editaAddress = createAsyncThunk(
   "/addresses/editaAddress",
   async ({ userId, addressId, formData }) => {
     const response = await axios.put(
-      `http://localhost:5000/api/shop/address/update/${userId}/${addressId}`,
+      `${backendBaseUrl}/api/shop/address/update/${userId}/${addressId}`,
       formData
     );
 
@@ -46,7 +48,7 @@ export const deleteAddress = createAsyncThunk(
   "/addresses/deleteAddress",
   async ({ userId, addressId }) => {
     const response = await axios.delete(
-      `http://localhost:5000/api/shop/address/delete/${userId}/${addressId}`
+      `${backendBaseUrl}/api/shop/address/delete/${userId}/${addressId}`
     );
 
     return response.data;

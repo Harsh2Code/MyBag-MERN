@@ -89,7 +89,7 @@ function ShoppingCheckout() {
         toast.success("Order created successfully.");
         try {
           const cartId = cartItems._id;
-            const clearCartUrl = `http://localhost:5000/api/shop/cart/clear/${cartId}`;
+            const clearCartUrl = `${backendBaseUrl}:5000/api/shop/cart/clear/${cartId}`;
             console.log("Calling clear cart API:", clearCartUrl);
             const response = await axios.delete(clearCartUrl);
             console.log("Clear cart response:", response);

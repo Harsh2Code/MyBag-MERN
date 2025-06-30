@@ -9,6 +9,8 @@ const initialState = {
   productDetails: null,
 };
 
+const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+
 export const fetchAllFilteredProducts = createAsyncThunk(
   "/products/fetchAllProducts",
   async ({ filterParams, sortParams }) => {
@@ -30,7 +32,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
     });
 
     const result = await axios.get(
-      `http://localhost:5000/api/shop/products/get?${query.toString()}`
+      `${backendBaseUrl}/api/shop/products/get?${query.toString()}`
     );
 
     console.log(result);
@@ -43,7 +45,7 @@ export const fetchProductDetails = createAsyncThunk(
   "/products/fetchProductDetails",
   async (id) => {
     const result = await axios.get(
-      `http://localhost:5000/api/shop/products/get/${id}`
+      `${backendBaseUrl}/api/shop/products/get/${id}`
     );
 
     return result?.data;
@@ -133,7 +135,7 @@ export default shoppingProductSlice.reducer;
 
 // // adding product to cart
 // export const addNewProduct = createAsyncThunk('product/addNewProduct', async (formData) => {
-//     const result = await axios.post('http://localhost:5000/api/admin/products/add-product', formData, {
+//     const result = await axios.post('${backendBaseUrl}/api/admin/products/add-product', formData, {
 //         headers: {
 //             'Content-Type': 'application/json',
 //         },
@@ -142,12 +144,12 @@ export default shoppingProductSlice.reducer;
 // });
 
 // export const fetchProduct = createAsyncThunk('product/get', async () => {
-//     const result = await axios.get('http://localhost:5000/api/admin/products/get-product');
+//     const result = await axios.get('${backendBaseUrl}/api/admin/products/get-product');
 //     return result?.data;
 // });
 
 // export const deleteProduct = createAsyncThunk('product/delete', async ({ id }) => {
-//     const result = await axios.post(`http://localhost:5000/api/admin/products/delete-product/${id}`, {
+//     const result = await axios.post(`${backendBaseUrl}/api/admin/products/delete-product/${id}`, {
 //         headers: {
 //             'Content-Type': 'application/json',
 //         },
@@ -156,7 +158,7 @@ export default shoppingProductSlice.reducer;
 // });
 
 // export const editProduct = createAsyncThunk('product/edit', async ({ id, formData }) => {
-//     const result = await axios.post(`http://localhost:5000/api/admin/products/edit-product/${id}`, formData, {
+//     const result = await axios.post(`${backendBaseUrl}/api/admin/products/edit-product/${id}`, formData, {
 //         headers: {
 //             'Content-Type': 'application/json',
 //         },

@@ -17,7 +17,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const { user } = useSelector((state) => state.auth);
   console.log("Current user in auth state:", user);
   const { cartItems } = useSelector((state) => state.shopCart);
-
+const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
   useEffect(() => {
     if (productDetails?._id) {
       fetchReviews();
@@ -26,7 +26,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
 
   const fetchReviews = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/shop/products/review/${productDetails._id}`);
+     const response = await axios.get(`${backendBaseUrl}:5000/api/shop/products/review/${productDetails._id}`);
       if (response.data.success) {
         setReviews(response.data.data.reviews);
         setAverageReview(response.data.data.averageRating);
@@ -94,7 +94,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     }
     console.log("Submitting review with userId:", user.id, "rating:", rating, "reviewText:", reviewMsg);
     try {
-      const response = await axios.post(`http://localhost:5000/api/shop/products/review/${productDetails._id}`, {
+      const response = await axios.post(`${backendBaseUrl}/api/shop/products/review/${productDetails._id}`, {
         userId: user.userId,
         rating,
         reviewText: reviewMsg,

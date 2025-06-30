@@ -9,11 +9,13 @@ const initialState = {
   orderDetails: null,
 };
 
+const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+
 export const createNewOrder = createAsyncThunk(
   "/order/createNewOrder",
   async (orderData) => {
     const response = await axios.post(
-      "http://localhost:5000/api/shop/order/create",
+      "${backendBaseUrl}/api/shop/order/create",
       orderData
     );
 
@@ -25,7 +27,7 @@ export const capturePayment = createAsyncThunk(
   "/order/capturePayment",
   async ({ paymentId, payerId, orderId }) => {
     const response = await axios.post(
-      "http://localhost:5000/api/shop/order/capture",
+      "${backendBaseUrl}/api/shop/order/capture",
       {
         paymentId,
         payerId,
@@ -41,7 +43,7 @@ export const getAllOrdersByUserId = createAsyncThunk(
   "/order/getAllOrdersByUserId",
   async () => {
     const response = await axios.get(
-      `http://localhost:5000/api/shop/order/list`,
+      `${backendBaseUrl}/api/shop/order/list`,
       {
         withCredentials: true,
       }
@@ -55,7 +57,7 @@ export const getOrderDetails = createAsyncThunk(
   "/order/getOrderDetails",
   async (id) => {
     const response = await axios.get(
-      `http://localhost:5000/api/shop/order/details/${id}`
+      `${backendBaseUrl}/api/shop/order/details/${id}`
     );
 
     return response.data;

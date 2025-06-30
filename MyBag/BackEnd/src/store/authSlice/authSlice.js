@@ -10,6 +10,8 @@ const initialState = {
     error: null
 }
 
+const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+
 export const registerUser = createAsyncThunk('auth/register',
     async (formData, { rejectWithValue }) => {
         try {
@@ -19,7 +21,7 @@ export const registerUser = createAsyncThunk('auth/register',
                 password: formData.Password,
                 role: formData.role
             };
-            const response = await axios.post('http://localhost:5000/api/auth/register', requestData, {
+            const response = await axios.post('${backendBaseUrl}/api/auth/register', requestData, {
                 withCredentials: true
             });
             return response.data;
@@ -36,7 +38,7 @@ export const LoginUser = createAsyncThunk('auth/login',
                 Email: formData.Email,
                 password: formData.password
             };
-            const response = await axios.post('http://localhost:5000/api/auth/login', requestData, {
+            const response = await axios.post('${backendBaseUrl}/api/auth/login', requestData, {
                 withCredentials: true
             });
             return response.data;
@@ -48,7 +50,7 @@ export const LoginUser = createAsyncThunk('auth/login',
 
 export const LogoutUser = createAsyncThunk('auth/logout',
     async () => {
-            const response = await axios.post('http://localhost:5000/api/auth/logout', {}, {
+            const response = await axios.post('${backendBaseUrl}/api/auth/logout', {}, {
                 withCredentials: true
             });
             return response.data;
@@ -59,7 +61,7 @@ export const LogoutUser = createAsyncThunk('auth/logout',
 export const checkAuth = createAsyncThunk('auth/check-auth',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/check-auth', null, {
+            const response = await axios.post('${backendBaseUrl}/api/auth/check-auth', null, {
                 withCredentials: true,
                 headers: {
                     'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate'
@@ -80,7 +82,7 @@ export const checkAuth = createAsyncThunk('auth/check-auth',
 export const refreshAuthToken = createAsyncThunk('auth/refresh-token',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/refresh-token', null, {
+            const response = await axios.post('${backendBaseUrl}/api/auth/refresh-token', null, {
                 withCredentials: true
             });
             return response.data;

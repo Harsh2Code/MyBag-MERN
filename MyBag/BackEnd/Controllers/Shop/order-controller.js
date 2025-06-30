@@ -148,8 +148,8 @@ const createPaypalPayment = async (req, res) => {
         },
       ],
       application_context: {
-        return_url: "http://localhost:3000/shop/payment-return",
-        cancel_url: "http://localhost:3000/shop/checkout",
+       return_url: "${backendBaseUrl}:3000/shop/payment-return",
+        cancel_url: "${backendBaseUrl}:3000/shop/checkout",
       },
     });
 

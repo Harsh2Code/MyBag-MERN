@@ -7,11 +7,13 @@ const initialState = {
   error: null,
 };
 
+const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+
 export const fetchUserProfile = createAsyncThunk(
   'auth/fetchUserProfile',
   async (userId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/auth/user/${userId}`, {
+      const response = await axios.get(`${backendBaseUrl}/api/auth/user/${userId}`, {
         withCredentials: true,
       });
       return response.data.user;
