@@ -7,7 +7,7 @@ import {
   editaAddress,
   fetchAllAddresses,
 } from "../../store/Shop/Address-Slice/Address-Slice";
-import AddressCard from "./address-card";
+import AddressCard from "./Address-card";
 
 const initialAddressFormData = {
   address: "",
