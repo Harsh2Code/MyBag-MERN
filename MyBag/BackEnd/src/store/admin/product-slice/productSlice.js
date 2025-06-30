@@ -10,7 +10,7 @@ const initialState = {
 const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
 
 export const addNewProduct = createAsyncThunk('product/addNewProduct', async (formData) => {
-    const result = await axios.post('${backendBaseUrl}/api/admin/products/add-product', formData, {
+    const result = await axios.post(`${backendBaseUrl}/api/admin/products/add-product`, formData, {
         headers: {
             'Content-Type': 'application/json',
         }
@@ -19,7 +19,7 @@ export const addNewProduct = createAsyncThunk('product/addNewProduct', async (fo
 });
 
 export const fetchProduct = createAsyncThunk('product/get', async () => {
-    const result = await axios.get('${backendBaseUrl}/api/admin/products/get-product');
+    const result = await axios.get(`${backendBaseUrl}/api/admin/products/get-product`);
     return result?.data;
 });
 

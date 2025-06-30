@@ -12,7 +12,7 @@ export default function Queries() {
     async function fetchQueries() {
       setIsLoading(true);
       try {
-        const response = await fetch('${backendBaseUrl}:5000/api/queries', { credentials: 'include' });
+        const response = await fetch(`${backendBaseUrl}/api/queries`, { credentials: 'include' });
         if (!response.ok) {
           throw new Error('Failed to fetch queries');
         }
