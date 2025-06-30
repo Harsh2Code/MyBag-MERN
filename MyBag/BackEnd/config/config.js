@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const mongoURI = 'mongodb+srv://<USERNAME>:<PASSWORD>@mybag.7chzyqm.mongodb.net/DATABASE?retryWrites=true&w=majority&appName=APPNAME';
+const mongoURI = 'mongodb+srv://steepclaw:pA1gv2WVIwPEP54D@mybag.7chzyqm.mongodb.net/auth-app?retryWrites=true&w=majority&appName=MyBag';
 
 // Mask password in connection string for logging
 let maskedMongoURI = mongoURI;
