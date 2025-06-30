@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -23,21 +22,17 @@ const port = 5000;
 connectDB();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://mybag-ui-mern.onrender.com/'],
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://mybag-ui-mern.onrender.com'],
   credentials: true,
 }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET || 'your-secret-key'));
 
 // Use auth router for all /api/auth routes
 app.use('/api/auth', authRoutes);
 
 // Middleware to verify JWT token for protected routes
 // app.use('/api/queries', authMiddleware);
-
-
-
-
 
 // POST /api/queries - open to all
 app.post('/api/queries', async (req, res) => {
@@ -73,7 +68,6 @@ app.get('/api/queries/all', async (req, res) => {
   }
 });
 
-  
 // Register Shop routers
 app.use('/api/admin/products', adminProductRoutes);
 app.use('/api/shop/products', productRoutes); // Added this line to fix 404 on shop products
