@@ -1,5 +1,5 @@
 import React from 'react';
-import ShoppingOrders from '../../Components/shopping/orders';
+import ShoppingOrders from '../../Components/shopping/Orders';
 
 function OrdersPage() {
   return <ShoppingOrders />;
