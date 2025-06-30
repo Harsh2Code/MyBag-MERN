@@ -4,7 +4,7 @@ import CheckAuth from './Components/CheckAuth';
 import Navbar from './Components/Navbar.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
-import Header from './Components/admin-view/header.jsx';
+import Header from './Components/admin-view/Header.jsx';
 import Slidebar from './Components/admin-view/Slidebar.jsx';
 import Dashboard from './pages/Admin-View/Dashboard.jsx';
 import Products from './pages/Admin-View/Products.jsx';
