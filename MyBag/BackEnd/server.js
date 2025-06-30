@@ -5,8 +5,6 @@ const cookieParser = require('cookie-parser');
 const connectDB = require('../BackEnd/config/db');
 const Query = require('../BackEnd/models/Query');
 
-/* console.log('MONGO_URI in server.js:', process.env.MONGO_URI); */
-
 const { loginUser, registerUser, logoutUser, authMiddleware } = require('../BackEnd/Controllers/auth/auth-controllers');
 const productRoutes = require('../BackEnd/routers/Shop/Product-Routes');
 const adminProductRoutes = require('../BackEnd/routers/admin/products-routes');
@@ -22,7 +20,7 @@ const port = 5000;
 connectDB();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://mybag-ui-mern.onrender.com'],
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://mybag-ui-mern.onrender.com', 'https://mybag-mern-1.onrender.com'],
   credentials: true,
 }));
 app.use(bodyParser.json());
@@ -70,12 +68,12 @@ app.get('/api/queries/all', async (req, res) => {
 
 // Register Shop routers
 app.use('/api/admin/products', adminProductRoutes);
-app.use('/api/shop/products', productRoutes); // Added this line to fix 404 on shop products
+app.use('/api/shop/products', productRoutes);
 app.use('/api/admin/orders', orderRoutes);
 app.use('/api/shop/order', orderRoutes);
 app.use('/api/shop/cart', cartRoutes);
 app.use('/api/shop/address', addressRoutes);
 
 app.listen(port, () => {
-  /* console.log(`Backend server running on http://localhost:${port}`); */
+  // console.log(`Backend server running on http://localhost:${port}`);
 });
