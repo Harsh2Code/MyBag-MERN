@@ -23,7 +23,7 @@ const port = 5000;
 connectDB();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://mybag-ui-mern.onrender.com/'],
   credentials: true,
 }));
 app.use(bodyParser.json());
