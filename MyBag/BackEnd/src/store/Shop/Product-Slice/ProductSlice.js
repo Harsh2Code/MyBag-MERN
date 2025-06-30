@@ -1,7 +1,7 @@
-
-
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+
+const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
 
 const initialState = {
   isLoading: false,
@@ -30,7 +30,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
     });
 
     const result = await axios.get(
-      `http://localhost:5000/api/shop/products/get?${query.toString()}`
+      `${backendBaseUrl}/api/shop/products/get?${query.toString()}`
     );
 
     console.log(result);
@@ -43,7 +43,7 @@ export const fetchProductDetails = createAsyncThunk(
   "/products/fetchProductDetails",
   async (id) => {
     const result = await axios.get(
-      `http://localhost:5000/api/shop/products/get/${id}`
+      `${backendBaseUrl}/api/shop/products/get/${id}`
     );
 
     return result?.data;
@@ -88,102 +88,3 @@ const shoppingProductSlice = createSlice({
 export const { setProductDetails } = shoppingProductSlice.actions;
 
 export default shoppingProductSlice.reducer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import axios from 'axios';
-// import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-// const initialState = {
-//     isLoading: false,
-//     productList: [],
-// };
-
-// // adding product to cart
-// export const addNewProduct = createAsyncThunk('product/addNewProduct', async (formData) => {
-//     const result = await axios.post('http://localhost:5000/api/admin/products/add-product', formData, {
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     });
-//     return result?.data;
-// });
-
-// export const fetchProduct = createAsyncThunk('product/get', async () => {
-//     const result = await axios.get('http://localhost:5000/api/admin/products/get-product');
-//     return result?.data;
-// });
-
-// export const deleteProduct = createAsyncThunk('product/delete', async ({ id }) => {
-//     const result = await axios.post(`http://localhost:5000/api/admin/products/delete-product/${id}`, {
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     });
-//     return result?.data;
-// });
-
-// export const editProduct = createAsyncThunk('product/edit', async ({ id, formData }) => {
-//     const result = await axios.post(`http://localhost:5000/api/admin/products/edit-product/${id}`, formData, {
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     });
-//     return result?.data;
-// });
-
-// const adminProductSlice = createSlice({
-//     name: 'adminProductSlice',
-//     initialState,
-//     reducers: {},
-//     extraReducers: (builder) => {
-//         builder
-//             .addCase(fetchProduct.pending, (state) => {
-//                 state.isLoading = true;
-//             })
-//             .addCase(fetchProduct.fulfilled, (state, action) => {
-//                 console.log(action.payload);
-
-//                 state.isLoading = false;
-//                 state.productList = action.payload.data;
-//             })
-//             .addCase(fetchProduct.rejected, (state, action) => {
-//                 state.isLoading = false;
-//                 state.productList = [];
-//             });
-//     },
-// });
-
-// export default adminProductSlice.reducer;
