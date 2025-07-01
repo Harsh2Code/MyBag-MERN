@@ -16,29 +16,40 @@ export const fetchAllFilteredProducts = createAsyncThunk(
   async ({ filterParams, sortParams }) => {
     console.log(fetchAllFilteredProducts, "fetchAllFilteredProducts");
 
-    // Manually serialize filterParams arrays as comma-separated strings
-    const serializedParams = {};
-    for (const key in filterParams) {
-      if (Array.isArray(filterParams[key])) {
-        serializedParams[key] = filterParams[key].join(',');
-      } else {
-        serializedParams[key] = filterParams[key];
+    try {
+      // Manually serialize filterParams arrays as comma-separated strings
+      const serializedParams = {};
+      for (const key in filterParams) {
+        if (Array.isArray(filterParams[key])) {
+          serializedParams[key] = filterParams[key].join(',');
+        } else {
+          serializedParams[key] = filterParams[key];
+        }
       }
+
+      const query = new URLSearchParams({
+        ...serializedParams,
+        sortBy: typeof sortParams === 'string' ? sortParams : JSON.stringify(sortParams),
+      });
+
+      const result = await axios.get(
+        `${backendBaseUrl}/api/shop/products/get?${query.toString()}`
+      );
+
+      console.log('API response:', result);
+      console.log('Response data:', result.data);
+
+      // Check if response data is JSON object or array
+      if (typeof result.data === 'string' && result.data.startsWith('<!DOCTYPE html>')) {
+        console.error('API returned HTML instead of JSON:', result.data);
+        return [];
+      }
+
+      return result?.data;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      return [];
     }
-
-    const query = new URLSearchParams({
-      ...serializedParams,
-      sortBy: typeof sortParams === 'string' ? sortParams : JSON.stringify(sortParams),
-    });
-
-    const result = await axios.get(
-      `${backendBaseUrl}/api/shop/products/get?${query.toString()}`
-    );
-
-    console.log('API response:', result);
-    console.log('Response data:', result.data);
-
-    return result?.data;
   }
 );
 
@@ -68,7 +79,25 @@ const shoppingProductSlice = createSlice({
       })
       .addCase(fetchAllFilteredProducts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.productList = action.payload.data ? action.payload.data : action.payload;
+        console.log('fetchAllFilteredProducts.fulfilled payload:', action.payload);
+        console.log('payload type:', typeof action.payload);
+        if (action.payload && Array.isArray(action.payload.data)) {
+          state.productList = action.payload.data;
+        } else if (action.payload && Array.isArray(action.payload)) {
+          state.productList = action.payload;
+        } else if (action.payload && typeof action.payload === 'object' && action.payload !== null) {
+          // Try to extract array from object values if possible
+          const values = Object.values(action.payload);
+          if (values.length === 1 && Array.isArray(values[0])) {
+            state.productList = values[0];
+          } else {
+            console.error('Unexpected object payload structure:', action.payload);
+            state.productList = [];
+          }
+        } else {
+          console.error('Unexpected payload structure in fetchAllFilteredProducts.fulfilled:', action.payload);
+          state.productList = [];
+        }
       })
       .addCase(fetchAllFilteredProducts.rejected, (state, action) => {
         state.isLoading = false;
