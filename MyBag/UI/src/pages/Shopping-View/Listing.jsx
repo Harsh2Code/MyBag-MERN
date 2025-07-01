@@ -157,16 +157,16 @@ export default function ShoppingListing() {
             </div>
           </div>
           <div className="row row-cols-3 g-4 p-3">
-            {productList && productList.length > 0
-              ? productList.map((productItem) => (
-                  <ShoppingProductTile
-                    key={productItem._id}
-                    handleGetProductDetails={() => dispatch(fetchProductDetails(productItem._id))}
-                    product={productItem}
-                    handleAddtoCart={handleAddtoCart}
-                  />
-                ))
-              : null}
+          {Array.isArray(productList) && productList.length > 0
+            ? productList.map((productItem) => (
+                <ShoppingProductTile
+                  key={productItem._id}
+                  handleGetProductDetails={() => dispatch(fetchProductDetails(productItem._id))}
+                  product={productItem}
+                  handleAddtoCart={handleAddtoCart}
+                />
+              ))
+            : <p>No products available.</p>}
           </div>
         </div>
       </div>
