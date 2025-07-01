@@ -27,21 +27,22 @@ export default function ShoppingListing() {
   ];
 
   useEffect(() => {
-    if (sort !== null) {
-      // Map filters keys from "Category" and "Brand" to lowercase keys expected by backend
-      const mappedFilters = {};
-      Object.keys(filters).forEach((key) => {
-        if (key === 'Category') {
-          mappedFilters['category'] = filters[key];
-        } else if (key === 'Brand') {
-          mappedFilters['brand'] = filters[key];
-        } else {
-          mappedFilters[key] = filters[key];
-        }
-      });
+    // Always dispatch fetchAllFilteredProducts on mount or when filters/sort change
+    const mappedFilters = {};
+    Object.keys(filters).forEach((key) => {
+      if (key === 'Category') {
+        mappedFilters['category'] = filters[key];
+      } else if (key === 'Brand') {
+        mappedFilters['brand'] = filters[key];
+      } else {
+        mappedFilters[key] = filters[key];
+      }
+    });
 
-      dispatch(fetchAllFilteredProducts({ filterParams: mappedFilters, sortParams: sort }));
-    }
+    // Use default sort if null
+    const sortParam = sort !== null ? sort : 'price-lowtohigh';
+
+    dispatch(fetchAllFilteredProducts({ filterParams: mappedFilters, sortParams: sortParam }));
   }, [dispatch, filters, sort]);
 
   function handleSort(value) {

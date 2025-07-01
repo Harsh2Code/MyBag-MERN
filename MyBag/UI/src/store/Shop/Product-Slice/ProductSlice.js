@@ -15,6 +15,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
   "/products/fetchAllProducts",
   async ({ filterParams, sortParams }) => {
     console.log(fetchAllFilteredProducts, "fetchAllFilteredProducts");
+    console.log('backendBaseUrl:', backendBaseUrl);
 
     try {
       // Manually serialize filterParams arrays as comma-separated strings
