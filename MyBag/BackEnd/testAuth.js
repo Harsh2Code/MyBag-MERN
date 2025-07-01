@@ -5,7 +5,7 @@ const User = require('./models/User');
 async function testConnection() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://VITE_BACKEND_URL:27017/ecommerce');
     // console.log('Successfully connected to MongoDB');
 
     // Check admin user
