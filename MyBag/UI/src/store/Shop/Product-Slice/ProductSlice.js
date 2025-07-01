@@ -9,7 +9,7 @@ const initialState = {
   productDetails: null,
 };
 
-const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
+const backendBaseUrl = "https://mybag-mern-1.onrender.com";
 
 export const fetchAllFilteredProducts = createAsyncThunk(
   "/products/fetchAllProducts",

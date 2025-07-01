@@ -20,7 +20,7 @@ const port = 5000;
 connectDB();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://mybag-ui-mern.onrender.com', 'https://mybag-mern-1.onrender.com'],
+  origin: ['http://VITE_BACKEND_URL:5173', 'http://VITE_BACKEND_URL:5174', 'https://mybag-ui-mern.onrender.com', 'https://mybag-mern-1.onrender.com'],
   credentials: true,
 }));
 app.use(bodyParser.json());
@@ -75,5 +75,5 @@ app.use('/api/shop/cart', cartRoutes);
 app.use('/api/shop/address', addressRoutes);
 
 app.listen(port, () => {
-  // console.log(`Backend server running on http://localhost:${port}`);
+  // console.log(`Backend server running on http://VITE_BACKEND_URL:${port}`);
 });
