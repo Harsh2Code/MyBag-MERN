@@ -6,7 +6,7 @@ export default function ProductImageUpload(props) {
 
   const inputRef = useRef(null);
 
-  const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+  const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
 
   function handleImageFileChange(event) {
     console.log(event.target.files);

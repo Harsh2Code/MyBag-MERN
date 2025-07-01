@@ -6,7 +6,7 @@ const initialState = {
   addressList: [],
 };
 
-const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
 
 export const addNewAddress = createAsyncThunk(
   "/addresses/addNewAddress",

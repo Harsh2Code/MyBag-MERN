@@ -7,7 +7,7 @@ const initialState = {
     error: null,
 }
 
-const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
 
 export const addNewProduct = createAsyncThunk('product/addNewProduct', async (formData) => {
     const result = await axios.post(`${backendBaseUrl}/api/admin/products/add-product`, formData, {
