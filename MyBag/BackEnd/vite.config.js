@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: ${backendBaseUrl},
+        target: `${backendBaseUrl}`,
         changeOrigin: true,
         secure: false,
       },

@@ -35,7 +35,8 @@ export const fetchAllFilteredProducts = createAsyncThunk(
       `${backendBaseUrl}/api/shop/products/get?${query.toString()}`
     );
 
-    console.log(result);
+    console.log('API response:', result);
+    console.log('Response data:', result.data);
 
     return result?.data;
   }
@@ -67,7 +68,7 @@ const shoppingProductSlice = createSlice({
       })
       .addCase(fetchAllFilteredProducts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.productList = action.payload.data;
+        state.productList = action.payload.data ? action.payload.data : action.payload;
       })
       .addCase(fetchAllFilteredProducts.rejected, (state, action) => {
         state.isLoading = false;
