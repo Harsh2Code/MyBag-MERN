@@ -2,7 +2,7 @@ import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-  cartItems: [],
+  cartItems: { items: [] },
   isLoading: false,
 };
 
