@@ -102,6 +102,9 @@ const shoppingOrderSlice = createSlice({
           console.log('Payload keys:', Object.keys(action.payload));
           if (action.payload.success && Array.isArray(action.payload.data)) {
             state.orderList = action.payload.data;
+          } else if (action.payload.success === false) {
+            // API returned failure, clear orderList
+            state.orderList = [];
           } else {
             console.warn('Payload data is not an array or success is false:', action.payload);
             state.orderList = [];
