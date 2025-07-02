@@ -110,6 +110,7 @@ const shoppingOrderSlice = createSlice({
           console.warn('Payload is not an object:', action.payload);
           state.orderList = [];
         }
+        console.log('Current orderList type:', typeof state.orderList, Array.isArray(state.orderList));
       })
       .addCase(getAllOrdersByUserId.rejected, (state) => {
         state.isLoading = false;
