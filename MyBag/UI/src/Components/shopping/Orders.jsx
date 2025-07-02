@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+lerasimport React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ShoppingOrderDetailsView from "./order-details";
 import {
@@ -47,7 +47,7 @@ const ShoppingOrders = () => {
         <h5 className="card-title">Order History</h5>
       </div>
       <div className="card-body">
-        {orderList && orderList.length > 0 ? (
+        {Array.isArray(orderList) && orderList.length > 0 ? (
           <table className="table">
             <thead>
               <tr>
@@ -93,7 +93,7 @@ const ShoppingOrders = () => {
             </tbody>
           </table>
         ) : (
-          <p>No orders found.</p>
+          <p>No orders found or orders data is not available.</p>
         )}
       </div>
 
