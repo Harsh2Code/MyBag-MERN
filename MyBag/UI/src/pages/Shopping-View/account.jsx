@@ -116,13 +116,13 @@ function ShoppingAccount() {
                 <p>No orders found.</p>
               ) : (
                 <ul className="list-group">
-                  {orderList.map((order) => (
-                    <li key={order._id} className="list-group-item">
-                      <strong>Order ID:</strong> {order._id} <br />
-                      <strong>Status:</strong> {order.orderStatus} <br />
-                      <strong>Total:</strong> ${order.totalAmount ? order.totalAmount.toFixed(2) : '0.00'}
-                    </li>
-                  ))}
+              {Array.isArray(orderList) ? orderList.map((order) => (
+                <li key={order._id} className="list-group-item">
+                  <strong>Order ID:</strong> {order._id} <br />
+                  <strong>Status:</strong> {order.orderStatus} <br />
+                  <strong>Total:</strong> ${order.totalAmount ? order.totalAmount.toFixed(2) : '0.00'}
+                </li>
+              )) : <p>Error: Orders data is not available.</p>}
                 </ul>
               )}
             </div>

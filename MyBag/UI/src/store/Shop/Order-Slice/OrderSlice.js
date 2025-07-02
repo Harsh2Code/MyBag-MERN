@@ -98,9 +98,16 @@ const shoppingOrderSlice = createSlice({
       .addCase(getAllOrdersByUserId.fulfilled, (state, action) => {
         state.isLoading = false;
         console.log('getAllOrdersByUserId fulfilled payload:', action.payload);
-        if (action.payload.success && Array.isArray(action.payload.data)) {
-          state.orderList = action.payload.data;
+        if (action.payload && typeof action.payload === 'object') {
+          console.log('Payload keys:', Object.keys(action.payload));
+          if (action.payload.success && Array.isArray(action.payload.data)) {
+            state.orderList = action.payload.data;
+          } else {
+            console.warn('Payload data is not an array or success is false:', action.payload);
+            state.orderList = [];
+          }
         } else {
+          console.warn('Payload is not an object:', action.payload);
           state.orderList = [];
         }
       })
