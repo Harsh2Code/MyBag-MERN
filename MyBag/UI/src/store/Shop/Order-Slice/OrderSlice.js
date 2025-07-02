@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from `@reduxjs/toolkit`;
-import axios from `axios`;
+
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
   approvalURL: null,
@@ -9,10 +10,10 @@ const initialState = {
   orderDetails: null,
 };
 
-const backendBaseUrl = `https://mybag-mern-1.onrender.com`;
+const backendBaseUrl = 'https://mybag-mern-1.onrender.com';
 
 export const createNewOrder = createAsyncThunk(
-  `/order/createNewOrder`,
+  '/order/createNewOrder',
   async (orderData) => {
     const response = await axios.post(
       `${backendBaseUrl}/api/shop/order/create`,
@@ -24,7 +25,7 @@ export const createNewOrder = createAsyncThunk(
 );
 
 export const capturePayment = createAsyncThunk(
-  `/order/capturePayment`,
+  '/order/capturePayment',
   async ({ paymentId, payerId, orderId }) => {
     const response = await axios.post(
       `${backendBaseUrl}/api/shop/order/capture`,
@@ -40,7 +41,7 @@ export const capturePayment = createAsyncThunk(
 );
 
 export const getAllOrdersByUserId = createAsyncThunk(
-  `/order/getAllOrdersByUserId`,
+  '/order/getAllOrdersByUserId',
   async () => {
     const response = await axios.get(
       `${backendBaseUrl}/api/shop/order/list`,
@@ -48,13 +49,13 @@ export const getAllOrdersByUserId = createAsyncThunk(
         withCredentials: true,
       }
     );
-    console.log(`getAllOrdersByUserId response:`, response.data);
+    console.log('getAllOrdersByUserId response:', response.data);
     return response.data;
   }
 );
 
 export const getOrderDetails = createAsyncThunk(
-  `/order/getOrderDetails`,
+  '/order/getOrderDetails',
   async (id) => {
     const response = await axios.get(
       `${backendBaseUrl}/api/shop/order/details/${id}`
@@ -65,7 +66,7 @@ export const getOrderDetails = createAsyncThunk(
 );
 
 const shoppingOrderSlice = createSlice({
-  name: `shoppingOrderSlice`,
+  name: 'shoppingOrderSlice',
   initialState,
   reducers: {
     resetOrderDetails: (state) => {
@@ -82,7 +83,7 @@ const shoppingOrderSlice = createSlice({
         state.approvalURL = action.payload.approvalURL;
         state.orderId = action.payload.orderId;
         sessionStorage.setItem(
-          `currentOrderId`,
+          'currentOrderId',
           JSON.stringify(action.payload.orderId)
         );
       })
@@ -96,7 +97,7 @@ const shoppingOrderSlice = createSlice({
       })
       .addCase(getAllOrdersByUserId.fulfilled, (state, action) => {
         state.isLoading = false;
-        console.log(`getAllOrdersByUserId fulfilled payload:`, action.payload);
+        console.log('getAllOrdersByUserId fulfilled payload:', action.payload);
         if (action.payload.success && Array.isArray(action.payload.data)) {
           state.orderList = action.payload.data;
         } else {
