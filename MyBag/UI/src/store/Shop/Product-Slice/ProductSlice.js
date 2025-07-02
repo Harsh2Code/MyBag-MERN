@@ -82,18 +82,20 @@ const shoppingProductSlice = createSlice({
         state.isLoading = false;
         console.log('fetchAllFilteredProducts.fulfilled payload:', action.payload);
         console.log('payload type:', typeof action.payload);
-        if (action.payload && Array.isArray(action.payload.data)) {
-          state.productList = action.payload.data;
-        } else if (action.payload && Array.isArray(action.payload)) {
-          state.productList = action.payload;
-        } else if (action.payload && typeof action.payload === 'object' && action.payload !== null) {
-          // Try to extract array from object values if possible
-          const values = Object.values(action.payload);
-          if (values.length === 1 && Array.isArray(values[0])) {
-            state.productList = values[0];
+        if (action.payload && typeof action.payload === 'object') {
+          if (Array.isArray(action.payload.data)) {
+            state.productList = action.payload.data;
+          } else if (Array.isArray(action.payload)) {
+            state.productList = action.payload;
           } else {
-            console.error('Unexpected object payload structure:', action.payload);
-            state.productList = [];
+            // Try to extract array from object values if possible
+            const values = Object.values(action.payload);
+            if (values.length === 1 && Array.isArray(values[0])) {
+              state.productList = values[0];
+            } else {
+              console.error('Unexpected object payload structure:', action.payload);
+              state.productList = [];
+            }
           }
         } else {
           console.error('Unexpected payload structure in fetchAllFilteredProducts.fulfilled:', action.payload);
