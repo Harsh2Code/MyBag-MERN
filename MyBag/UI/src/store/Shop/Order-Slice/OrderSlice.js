@@ -16,8 +16,9 @@ export const createNewOrder = createAsyncThunk(
   '/order/createNewOrder',
   async (orderData) => {
     const response = await axios.post(
-      `${backendBaseUrl}/api/shop/order/create`,
-      orderData
+      '/api/shop/order/create',
+      orderData,
+      { withCredentials: true }
     );
 
     return response.data;
@@ -28,12 +29,13 @@ export const capturePayment = createAsyncThunk(
   '/order/capturePayment',
   async ({ paymentId, payerId, orderId }) => {
     const response = await axios.post(
-      `${backendBaseUrl}/api/shop/order/capture`,
+      '/api/shop/order/capture',
       {
         paymentId,
         payerId,
         orderId,
-      }
+      },
+      { withCredentials: true }
     );
 
     return response.data;
@@ -44,7 +46,7 @@ export const getAllOrdersByUserId = createAsyncThunk(
   '/order/getAllOrdersByUserId',
   async () => {
     const response = await axios.get(
-      `${backendBaseUrl}/api/shop/order/list`,
+      '/api/shop/order/list',
       {
         withCredentials: true,
       }
@@ -58,7 +60,8 @@ export const getOrderDetails = createAsyncThunk(
   '/order/getOrderDetails',
   async (id) => {
     const response = await axios.get(
-      `${backendBaseUrl}/api/shop/order/details/${id}`
+      `/api/shop/order/details/${id}`,
+      { withCredentials: true }
     );
 
     return response.data;
