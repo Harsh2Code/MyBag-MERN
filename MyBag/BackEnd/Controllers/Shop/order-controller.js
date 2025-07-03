@@ -64,7 +64,7 @@ const createOrder = async (req, res) => {
 const getAllOrdersByUser = async (req, res) => {
   try {
     const userId = req.user && req.user.userId;
-    // console.log("getAllOrdersByUser - req.user:", req.user);
+    console.log("getAllOrdersByUser - req.user:", req.user);
     if (!userId) {
       return res.status(401).json({
         success: false,
@@ -73,7 +73,7 @@ const getAllOrdersByUser = async (req, res) => {
     }
 
     const orders = await Order.find({ userId });
-    // console.log("getAllOrdersByUser - orders found:", orders);
+    console.log("getAllOrdersByUser - orders found:", orders);
 
     if (!orders.length) {
       return res.status(404).json({
@@ -87,7 +87,7 @@ const getAllOrdersByUser = async (req, res) => {
       data: orders,
     });
   } catch (e) {
-    // console.log(e);
+    console.log("getAllOrdersByUser - error:", e);
 
     res.status(500).json({
       success: false,

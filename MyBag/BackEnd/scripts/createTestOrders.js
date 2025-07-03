@@ -4,9 +4,9 @@ const config = require('../config/config');
 
 const mongoURI = config.mongoURI;
 
-const testOrders = [
+const testOrdersTemplate = [
   {
-    userId: 'user123',
+    userId: '', // to be set dynamically
     cartId: 'cart123',
     cartItems: [
       {
@@ -42,7 +42,7 @@ const testOrders = [
     payerId: 'payer123',
   },
   {
-    userId: 'user456',
+    userId: '', // to be set dynamically
     cartId: 'cart456',
     cartItems: [
       {
@@ -72,7 +72,7 @@ const testOrders = [
   },
 ];
 
-async function createTestOrders() {
+async function createTestOrders(userId) {
   try {
     /* console.log('Starting createTestOrders script...'); */
     await mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -80,6 +80,11 @@ async function createTestOrders() {
 
     const deleteResult = await Order.deleteMany({});
     /* console.log(`Cleared existing orders: ${deleteResult.deletedCount} documents deleted`); */
+
+    const testOrders = testOrdersTemplate.map(order => ({
+      ...order,
+      userId,
+    }));
 
     const insertResult = await Order.insertMany(testOrders);
     /* console.log(`Inserted test orders: ${insertResult.length} documents inserted`); */
@@ -92,4 +97,13 @@ async function createTestOrders() {
   }
 }
 
-createTestOrders();
+if (require.main === module) {
+  const userId = process.argv[2];
+  if (!userId) {
+    console.error('Please provide a userId as the first argument');
+    process.exit(1);
+  }
+  createTestOrders(userId);
+}
+
+module.exports = createTestOrders;

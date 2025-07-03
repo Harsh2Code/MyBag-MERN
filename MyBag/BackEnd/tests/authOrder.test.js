@@ -50,6 +50,8 @@ describe('Authentication and Order API tests', () => {
     }
   }, 20000);
 
+  const jwt = require('jsonwebtoken');
+
   test('Login user and receive token cookie', async () => {
     try {
       const res = await request(app)
@@ -65,6 +67,8 @@ describe('Authentication and Order API tests', () => {
       const tokenCookie = cookies.match(/token=([^;]+)/);
       expect(tokenCookie).toBeTruthy();
       token = tokenCookie[1];
+      const decoded = jwt.decode(token);
+      console.log('Decoded user ID from token:', decoded.userId);
     } catch (error) {
       console.error('Login test error:', error);
       throw error;
