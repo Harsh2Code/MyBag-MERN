@@ -1,4 +1,3 @@
-import React from 'react';
 import ShoppingOrders from '../../Components/shopping/Orders';
 
 function OrdersPage() {
