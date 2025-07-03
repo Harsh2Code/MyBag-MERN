@@ -1,0 +1,46 @@
+/* Styles for admin layout */
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.admin-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.admin-sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.admin-main {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Mobile view adjustments */
+.admin-layout.mobile-view .admin-sidebar {
+  display: none;
+}
+
+.admin-layout.mobile-view .admin-main {
+  margin-left: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Prevent horizontal overflow globally */
+html, body {
+  overflow-x: hidden;
+}
