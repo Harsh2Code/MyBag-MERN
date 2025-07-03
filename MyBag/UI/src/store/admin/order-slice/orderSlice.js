@@ -26,7 +26,7 @@ export const createNewOrder = createAsyncThunk(
   'adminOrders/createNewOrder',
   async (orderData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`BaseUrl}/api/shop/order/create`, orderData);
+      const response = await axios.post(`${backendBaseUrl}/api/shop/order/create`, orderData, { withCredentials: true });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Error creating order');
