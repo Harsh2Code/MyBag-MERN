@@ -1,5 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+const API_BASE_URL = 'https://mybag-server-mern.onrender.com';
 
 const initialState = {
   userProfile: null,
@@ -8,15 +10,13 @@ const initialState = {
 };
 
 export const fetchUserProfile = createAsyncThunk(
-  'auth/fetchUserProfile',
+  'userProfile/fetchUserProfile',
   async (userId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`https://mybag-server-mern.onrender.com/api/auth/user/${userId}`, {
-        withCredentials: true,
-      });
-      return response.data.user;
+      const response = await axios.get(`${API_BASE_URL}/api/auth/profile/${userId}`);
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || error.message);
+      return rejectWithValue(error.response?.data || 'Error fetching user profile');
     }
   }
 );
@@ -24,13 +24,7 @@ export const fetchUserProfile = createAsyncThunk(
 const userProfileSlice = createSlice({
   name: 'userProfile',
   initialState,
-  reducers: {
-    clearUserProfile: (state) => {
-      state.userProfile = null;
-      state.isLoading = false;
-      state.error = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserProfile.pending, (state) => {
@@ -39,7 +33,8 @@ const userProfileSlice = createSlice({
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.userProfile = action.payload;
+        console.log('User profile data:', action.payload);
+        state.userProfile = action.payload.data;
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.isLoading = false;
@@ -48,5 +43,4 @@ const userProfileSlice = createSlice({
   },
 });
 
-export const { clearUserProfile } = userProfileSlice.actions;
 export default userProfileSlice.reducer;
