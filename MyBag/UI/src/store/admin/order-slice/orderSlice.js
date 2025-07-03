@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_BASE_URL = 'https://mybag-server-mern.onrender.com';
+
 const initialState = {
   orders: [],
   isLoading: false,
@@ -12,7 +14,7 @@ export const fetchOrders = createAsyncThunk(
   'adminOrders/fetchOrders',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('https://mybag-server-mern.onrender.com/api/admin/orders/orders');
+      const response = await axios.get(`${API_BASE_URL}/api/admin/orders/orders`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Error fetching orders');
@@ -25,7 +27,7 @@ export const createNewOrder = createAsyncThunk(
   'adminOrders/createNewOrder',
   async (orderData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('https://mybag-server-mern.onrender.com/api/shop/order/create', orderData);
+      const response = await axios.post(`${API_BASE_URL}/api/shop/order/create`, orderData);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Error creating order');
@@ -38,7 +40,7 @@ export const updateOrderStatus = createAsyncThunk(
   'adminOrders/updateOrderStatus',
   async ({ orderId, status }, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(`https://mybag-server-mern.onrender.com/api/admin/orders/orders/${orderId}/status`, { status });
+      const response = await axios.patch(`${API_BASE_URL}/api/admin/orders/orders/${orderId}/status`, { status });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Error updating order status');

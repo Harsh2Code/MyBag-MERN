@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const API_BASE_URL = 'https://mybag-server-mern.onrender.com';
+
 const initialState = {
   approvalURL: null,
   isLoading: false,
@@ -13,7 +15,7 @@ export const createNewOrder = createAsyncThunk(
   "/order/createNewOrder",
   async (orderData) => {
     const response = await axios.post(
-      "https://mybag-server-mern.onrender.com/api/shop/order/create",
+      `${API_BASE_URL}/api/shop/order/create`,
       orderData
     );
 
@@ -25,7 +27,7 @@ export const capturePayment = createAsyncThunk(
   "/order/capturePayment",
   async ({ paymentId, payerId, orderId }) => {
     const response = await axios.post(
-      "https://mybag-server-mern.onrender.com/api/shop/order/capture",
+      `${API_BASE_URL}/api/shop/order/capture`,
       {
         paymentId,
         payerId,
@@ -41,7 +43,7 @@ export const getAllOrdersByUserId = createAsyncThunk(
   "/order/getAllOrdersByUserId",
   async () => {
     const response = await axios.get(
-      `https://mybag-server-mern.onrender.com/api/shop/order/list`,
+      `${API_BASE_URL}/api/shop/order/list`,
       {
         withCredentials: true,
       }
@@ -55,7 +57,7 @@ export const getOrderDetails = createAsyncThunk(
   "/order/getOrderDetails",
   async (id) => {
     const response = await axios.get(
-      `https://mybag-server-mern.onrender.com/api/shop/order/details/${id}`
+      `${API_BASE_URL}/api/shop/order/details/${id}`
     );
 
     return response.data;

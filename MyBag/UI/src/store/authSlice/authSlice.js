@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
+const API_BASE_URL = 'https://mybag-server-mern.onrender.com';
+
 const initialState = {
     isAuthenticated: false,
     isLoading: false,
@@ -19,7 +21,7 @@ export const registerUser = createAsyncThunk('auth/register',
                 password: formData.Password,
                 role: formData.role
             };
-            const response = await axios.post('https://mybag-server-mern.onrender.com/api/auth/register', requestData, {
+            const response = await axios.post(`${API_BASE_URL}/api/auth/register`, requestData, {
                 withCredentials: true
             });
             return response.data;
@@ -36,7 +38,7 @@ export const LoginUser = createAsyncThunk('auth/login',
                 Email: formData.Email,
                 password: formData.password
             };
-            const response = await axios.post('https://mybag-server-mern.onrender.com/api/auth/login', requestData, {
+            const response = await axios.post(`${API_BASE_URL}/api/auth/login`, requestData, {
                 withCredentials: true
             });
             return response.data;
@@ -48,7 +50,7 @@ export const LoginUser = createAsyncThunk('auth/login',
 
 export const LogoutUser = createAsyncThunk('auth/logout',
     async () => {
-            const response = await axios.post('https://mybag-server-mern.onrender.com/api/auth/logout', {}, {
+            const response = await axios.post(`${API_BASE_URL}/api/auth/logout`, {}, {
                 withCredentials: true
             });
             return response.data;
@@ -59,7 +61,7 @@ export const LogoutUser = createAsyncThunk('auth/logout',
 export const checkAuth = createAsyncThunk('auth/check-auth',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.post('https://mybag-server-mern.onrender.com/api/auth/check-auth', null, {
+            const response = await axios.post(`${API_BASE_URL}/api/auth/check-auth`, null, {
                 withCredentials: true,
                 headers: {
                     'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate'
@@ -80,7 +82,7 @@ export const checkAuth = createAsyncThunk('auth/check-auth',
 export const refreshAuthToken = createAsyncThunk('auth/refresh-token',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.post('https://mybag-server-mern.onrender.com/api/auth/refresh-token', null, {
+            const response = await axios.post(`${API_BASE_URL}/api/auth/refresh-token`, null, {
                 withCredentials: true
             });
             return response.data;

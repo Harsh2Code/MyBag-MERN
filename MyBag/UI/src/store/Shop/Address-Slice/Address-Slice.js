@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const API_BASE_URL = 'https://mybag-server-mern.onrender.com';
+
 const initialState = {
   isLoading: false,
   addressList: [],
@@ -11,7 +13,7 @@ export const addNewAddress = createAsyncThunk(
   async (formData) => {
     console.log("Sending addNewAddress payload:", formData);
     const response = await axios.post(
-      "https://mybag-server-mern.onrender.com/api/shop/address/add",
+      `${API_BASE_URL}/api/shop/address/add`,
       formData
     );
 
@@ -23,7 +25,7 @@ export const fetchAllAddresses = createAsyncThunk(
   "/addresses/fetchAllAddresses",
   async (userId) => {
     const response = await axios.get(
-      `https://mybag-server-mern.onrender.com/api/shop/address/get/${userId}`
+      `${API_BASE_URL}/api/shop/address/get/${userId}`
     );
     console.log("fetchAllAddresses response:", response.data);
     return response.data;
@@ -34,7 +36,7 @@ export const editaAddress = createAsyncThunk(
   "/addresses/editaAddress",
   async ({ userId, addressId, formData }) => {
     const response = await axios.put(
-      `https://mybag-server-mern.onrender.com/api/shop/address/update/${userId}/${addressId}`,
+      `${API_BASE_URL}/api/shop/address/update/${userId}/${addressId}`,
       formData
     );
 
@@ -46,7 +48,7 @@ export const deleteAddress = createAsyncThunk(
   "/addresses/deleteAddress",
   async ({ userId, addressId }) => {
     const response = await axios.delete(
-      `https://mybag-server-mern.onrender.com/api/shop/address/delete/${userId}/${addressId}`
+      `${API_BASE_URL}/api/shop/address/delete/${userId}/${addressId}`
     );
 
     return response.data;

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+const API_BASE_URL = 'https://mybag-server-mern.onrender.com';
+
 const initialState = {
   cartItems: [],
   isLoading: false,
@@ -10,7 +12,7 @@ export const addToCart = createAsyncThunk(
   "cart/addToCart",
   async ({ userId, productId, quantity }) => {
     const response = await axios.post(
-      "https://mybag-server-mern.onrender.com/api/shop/cart/add",
+      `${API_BASE_URL}/api/shop/cart/add`,
       {
         userId,
         productId,
@@ -25,7 +27,7 @@ export const fetchCartItems = createAsyncThunk(
   "cart/fetchCartItems",
   async (userId) => {
     const response = await axios.get(
-      `https://mybag-server-mern.onrender.com/api/shop/cart/get/${userId}`
+      `${API_BASE_URL}/api/shop/cart/get/${userId}`
     );
     return response.data;
   }
@@ -35,7 +37,7 @@ export const deleteCartItem = createAsyncThunk(
   "cart/deleteCartItem",
   async ({ _id }) => {
     const response = await axios.delete(
-      `https://mybag-server-mern.onrender.com/api/shop/cart/${_id}`
+      `${API_BASE_URL}/api/shop/cart/${_id}`
     );
     return response.data;
   }
@@ -45,7 +47,7 @@ export const updateCartQuantity = createAsyncThunk(
   "cart/updateCartQuantity",
   async ({ userId, productId, quantity }) => {
     const response = await axios.put(
-      "https://mybag-server-mern.onrender.com/api/shop/cart/update-cart",
+      `${API_BASE_URL}/api/shop/cart/update-cart`,
       {
         userId,
         productId,
@@ -60,7 +62,7 @@ export const clearCartAsync = createAsyncThunk(
   "cart/clearCartAsync",
   async (cartId) => {
     const response = await axios.delete(
-      `https://mybag-server-mern.onrender.com/api/shop/cart/clear/${cartId}`
+      `${API_BASE_URL}/api/shop/cart/clear/${cartId}`
     );
     return response.data;
   }

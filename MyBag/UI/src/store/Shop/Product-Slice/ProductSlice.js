@@ -1,7 +1,7 @@
-
-
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+
+const API_BASE_URL = 'https://mybag-server-mern.onrender.com';
 
 const initialState = {
   isLoading: false,
@@ -30,7 +30,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
     });
 
     const result = await axios.get(
-      `https://mybag-server-mern.onrender.com/api/shop/products/get?${query.toString()}`
+      `${API_BASE_URL}/api/shop/products/get?${query.toString()}`
     );
 
     console.log(result);
@@ -43,7 +43,7 @@ export const fetchProductDetails = createAsyncThunk(
   "/products/fetchProductDetails",
   async (id) => {
     const result = await axios.get(
-      `https://mybag-server-mern.onrender.com/api/shop/products/get/${id}`
+      `${API_BASE_URL}/api/shop/products/get/${id}`
     );
 
     return result?.data;
