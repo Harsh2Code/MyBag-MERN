@@ -35,7 +35,7 @@ router.get("/user/:id", (req, res) => {
 });
 
 // Simple 404 handler
-router.use((req, res) => {
+router.use('/*',(req, res) => {
     res.status(404).send("Page not found");
 });
 
