@@ -17,7 +17,7 @@ const addressRoutes = require('../BackEnd/routers/Shop/address-routes');
 const authRoutes = require('../BackEnd/routers/auth/auth-routes');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // Connect to MongoDB
 connectDB();
@@ -26,7 +26,7 @@ app.use(cors({
   origin: ['http://localhost:5173', 'http://localhost:5174', 'https://mybag-ui-mern.onrender.com'],
   credentials: true,
 }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb' }));
 app.use(cookieParser());
 
 // Use auth router for all /api/auth routes
