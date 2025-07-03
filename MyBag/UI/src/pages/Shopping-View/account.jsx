@@ -16,10 +16,10 @@ function ShoppingAccount() {
   const { addressList, isLoading: addressesLoading } = useSelector((state) => state.shopAddress);
 
   useEffect(() => {
-    if (user && user.userId) {
-      dispatch(getAllOrdersByUserId(user.userId));
-      dispatch(fetchAllAddresses(user.userId));
-      dispatch(fetchUserProfile(user.userId));
+    if (user && user._id) {
+      dispatch(getAllOrdersByUserId(user._id));
+      dispatch(fetchAllAddresses(user._id));
+      dispatch(fetchUserProfile(user._id));
     }
   }, [user, dispatch]);
 
