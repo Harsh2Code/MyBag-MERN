@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const addNewProduct = createAsyncThunk('product/addNewProduct', async (formData) => {
-    const result = await axios.post('http://localhost:5000/api/admin/products/add-product', formData, {
+    const result = await axios.post('https://mybag-server-mern.onrender.com/api/admin/products/add-product', formData, {
         headers: {
             'Content-Type': 'application/json',
         }
@@ -17,12 +17,12 @@ export const addNewProduct = createAsyncThunk('product/addNewProduct', async (fo
 });
 
 export const fetchProduct = createAsyncThunk('product/get', async () => {
-    const result = await axios.get('http://localhost:5000/api/admin/products/get-product');
+    const result = await axios.get('https://mybag-server-mern.onrender.com/api/admin/products/get-product');
     return result?.data;
 });
 
 export const deleteProduct = createAsyncThunk('product/delete', async ({id}) => {
-    const result = await axios.delete(`http://localhost:5000/api/admin/products/delete-product/${id}`, {}, {
+    const result = await axios.delete(`https://mybag-server-mern.onrender.com/api/admin/products/delete-product/${id}`, {}, {
         headers: {
             'Content-Type': 'application/json',
         }
@@ -31,7 +31,7 @@ export const deleteProduct = createAsyncThunk('product/delete', async ({id}) => 
 });
 
 export const editProduct = createAsyncThunk('product/edit', async ({id, formData}) => {
-    const result = await axios.put(`http://localhost:5000/api/admin/products/edit-product/${id}`, formData ,{
+    const result = await axios.put(`https://mybag-server-mern.onrender.com/api/admin/products/edit-product/${id}`, formData ,{
         headers: {
             'Content-Type': 'application/json',
         }

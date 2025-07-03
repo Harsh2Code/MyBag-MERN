@@ -19,7 +19,7 @@ export default function ProductImageUpload(props) {
     console.log("Uploading file:", props.imageFile);
     const data = new FormData();
     data.append('my_file', props.imageFile );
-    const response = await axios.post("http://localhost:5000/api/admin/products/upload-image", data, { withCredentials: true });
+    const response = await axios.post("https://mybag-server-mern.onrender.com/api/admin/products/upload-image", data, { withCredentials: true });
     
     console.log("Upload response:", response);
 

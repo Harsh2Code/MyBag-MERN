@@ -11,7 +11,7 @@ export const fetchUserProfile = createAsyncThunk(
   'auth/fetchUserProfile',
   async (userId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/auth/user/${userId}`, {
+      const response = await axios.get(`https://mybag-server-mern.onrender.com/api/auth/user/${userId}`, {
         withCredentials: true,
       });
       return response.data.user;

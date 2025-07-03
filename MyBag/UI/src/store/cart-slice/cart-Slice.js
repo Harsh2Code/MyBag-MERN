@@ -10,7 +10,7 @@ export const addToCart = createAsyncThunk(
   "cart/addToCart",
   async ({ userId, productId, quantity }) => {
     const response = await axios.post(
-      "http://localhost:5000/api/shop/cart/add",
+      "https://mybag-server-mern.onrender.com/api/shop/cart/add",
       {
         userId,
         productId,
@@ -25,7 +25,7 @@ export const fetchCartItems = createAsyncThunk(
   "cart/fetchCartItems",
   async (userId) => {
     const response = await axios.get(
-      `http://localhost:5000/api/shop/cart/get/${userId}`
+      `https://mybag-server-mern.onrender.com/api/shop/cart/get/${userId}`
     );
     return response.data;
   }
@@ -35,7 +35,7 @@ export const deleteCartItem = createAsyncThunk(
   "cart/deleteCartItem",
   async ({ _id }) => {
     const response = await axios.delete(
-      `http://localhost:5000/api/shop/cart/${_id}`
+      `https://mybag-server-mern.onrender.com/api/shop/cart/${_id}`
     );
     return response.data;
   }
@@ -45,7 +45,7 @@ export const updateCartQuantity = createAsyncThunk(
   "cart/updateCartQuantity",
   async ({ userId, productId, quantity }) => {
     const response = await axios.put(
-      "http://localhost:5000/api/shop/cart/update-cart",
+      "https://mybag-server-mern.onrender.com/api/shop/cart/update-cart",
       {
         userId,
         productId,
@@ -60,7 +60,7 @@ export const clearCartAsync = createAsyncThunk(
   "cart/clearCartAsync",
   async (cartId) => {
     const response = await axios.delete(
-      `http://localhost:5000/api/shop/cart/clear/${cartId}`
+      `https://mybag-server-mern.onrender.com/api/shop/cart/clear/${cartId}`
     );
     return response.data;
   }
