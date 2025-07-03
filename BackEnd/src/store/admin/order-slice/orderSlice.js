@@ -6,7 +6,7 @@ const initialState = {
   isLoading: false,
   error: null,
 };
-const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
 
 
 // Async thunk to fetch orders from backend

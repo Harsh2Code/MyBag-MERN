@@ -17,7 +17,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const { user } = useSelector((state) => state.auth);
   console.log("Current user in auth state:", user);
   const { cartItems } = useSelector((state) => state.shopCart);
-const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
   useEffect(() => {
     if (productDetails?._id) {
       fetchReviews();

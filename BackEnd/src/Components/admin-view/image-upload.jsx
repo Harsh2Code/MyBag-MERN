@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import axios from 'axios';
 import { ImageUp, FileImage, X } from 'lucide-react';
 
-const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
 
 export default function ProductImageUpload(props) {
 

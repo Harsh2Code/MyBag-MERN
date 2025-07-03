@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
 
 const initialState = {
   isLoading: false,

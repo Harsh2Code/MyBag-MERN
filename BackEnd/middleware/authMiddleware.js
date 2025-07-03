@@ -2,7 +2,9 @@ const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res, next) => {
   const token = req.cookies.token;
+  console.log("authMiddleware - token received:", token);
   if (!token) {
+    console.log("authMiddleware - no token found in cookies");
     return res.status(401).json({
       success: false,
       message: 'Unauthorized user'
@@ -15,6 +17,7 @@ const authMiddleware = (req, res, next) => {
     req.user = decoded;
     return next();
   } catch (error) {
+    console.log("authMiddleware - token verification failed:", error.message);
     return res.status(401).json({
       success: false,
       message: 'Unauthorized user'

@@ -75,5 +75,5 @@ app.use('/api/shop/cart', cartRoutes);
 app.use('/api/shop/address', addressRoutes);
 
 app.listen(port, () => {
-  // console.log(`Backend server running on http://localhost:${port}`);
+  // console.log(`Backend server running on http://VITE_BACKEND_URL:${port}`);
 });

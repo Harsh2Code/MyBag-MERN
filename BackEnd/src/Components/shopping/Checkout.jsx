@@ -19,7 +19,7 @@ function ShoppingCheckout() {
   const [isPaymentStart, setIsPaymemntStart] = useState(false);
   const dispatch = useDispatch();
 
-  const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || "";
+  const backendBaseUrl = process.env.VITE_BACKEND_URL || "";
 
   useEffect(() => {
     if (user?.userId) {

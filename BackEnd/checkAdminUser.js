@@ -4,7 +4,7 @@ const User = require('./models/User');
 
 async function checkAdminUser() {
   try {
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://VITE_BACKEND_URL:27017/ecommerce');
     console.log('Connected to MongoDB');
 
     const adminUser = await User.findOne({ Email: 'admin@example.com' });
