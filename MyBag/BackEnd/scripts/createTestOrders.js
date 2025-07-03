@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Order = require('../models/Order');
+const config = require('../config/config');
 
-const mongoURI = 'mongodb://VITE_BACKEND_URL:27017/auth-app'; // Updated to match backend config
+const mongoURI = config.mongoURI;
 
 const testOrders = [
   {

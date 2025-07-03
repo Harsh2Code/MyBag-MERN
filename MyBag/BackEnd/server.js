@@ -29,6 +29,16 @@ app.use(cookieParser(process.env.COOKIE_SECRET || 'your-secret-key'));
 // Use auth router for all /api/auth routes
 app.use('/api/auth', authRoutes);
 
+// Express-validator error handling middleware
+const { validationResult } = require('express-validator');
+app.use((req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success: false, errors: errors.array() });
+  }
+  next();
+});
+
 // Middleware to verify JWT token for protected routes
 // app.use('/api/queries', authMiddleware);
 
