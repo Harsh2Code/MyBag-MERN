@@ -1,0 +1,46 @@
+#root {
+  min-width: 1280px;
+  margin: 0 auto;
+  /* padding: 2rem; */
+  /* padding-top: 5rem; Account for fixed navbar */
+  text-align: center;
+  background-color: white;
+  min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+  height: 60px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(27, 19, 19, 0.1);
+  z-index: 1030;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+}
+
+.admin-layout {
+  margin-left: 250px;
+  width: 1200px;
+  height: 100vh;
+}
+
+body {
+  height: auto;
+  background-color: #FCFFDB !important;
+}
+
+
+/*
+Make all icons this color
+svg, i, .icon {
+  color: black !important;
+  fill: rgb(255, 204, 0) !important;
+  stroke: black !important;
+} */
