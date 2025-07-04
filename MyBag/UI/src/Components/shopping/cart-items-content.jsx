@@ -58,7 +58,7 @@ function UserCartItemsContent({ cartItem }) {
 
   function handleCartItemDelete(getCartItem) {
     dispatch(
-      deleteCartItem({ userId: user?.userId, productId: getCartItem?.productId })
+      deleteCartItem({ _id: getCartItem?._id })
     ).then((data) => {
       if (data?.payload?.success) {
         toast.success("Cart item is deleted successfully");

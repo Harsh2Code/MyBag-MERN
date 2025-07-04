@@ -30,5 +30,6 @@ router.post('/check-auth', authMiddleware, (req, res) => {
 
 // New route to get user profile by userId
 router.get('/user/:userId', authMiddleware, getUserProfile);
+router.get('/profile/:userId', authMiddleware, getUserProfile);
 
 module.exports = router;
