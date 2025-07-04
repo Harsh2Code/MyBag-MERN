@@ -78,7 +78,7 @@ function ShoppingAccount() {
             <p><strong>Email:</strong> {userProfile.Email || 'N/A'}</p>
             <p><strong>Role:</strong> {userProfile.role || 'N/A'}</p>
             <p><strong>Account Created At:</strong> {formatDate(userProfile.createdAt)}</p>
-            <pre>User Profile Data: {JSON.stringify(userProfile, null, 2)}</pre>
+            {/* <pre>User Profile Data: {JSON.stringify(userProfile, null, 2)}</pre> */}
           </>
         ) : (
           <p>User profile data is not available.</p>
