@@ -82,13 +82,6 @@ app.use('/api/shop/order', orderRoutes);
 app.use('/api/shop/cart', cartRoutes);
 app.use('/api/shop/address', addressRoutes);
 
-// Serve frontend static files
-const path = require('path');
-app.use(express.static(path.join(__dirname, '../../MyBag/UI/dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../MyBag/UI/dist/index.html'));
-});
 
 app.listen(port, () => {
   console.log(`Backend server running on http://localhost:${port}`);

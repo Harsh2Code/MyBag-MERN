@@ -8,7 +8,7 @@ import Header from './Components/admin-view/Header.jsx';
 import Slidebar from './Components/admin-view/Slidebar.jsx';
 import Dashboard from './pages/Admin-View/Dashboard.jsx';
 import Products from './pages/Admin-View/Products.jsx';
-import AdminOrdersView from './Components/admin-view/orders.jsx'; // updated import
+import AdminOrdersView from './Components/admin-view/orders.jsx'; 
 import Orders from './pages/Shopping-View/orders.jsx';
 import ShoppingHome from './pages/Shopping-View/home.jsx';
 import Listing from './pages/Shopping-View/Listing.jsx';
