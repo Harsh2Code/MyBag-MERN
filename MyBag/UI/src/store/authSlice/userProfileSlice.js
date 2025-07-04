@@ -34,11 +34,19 @@ const userProfileSlice = createSlice({
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.isLoading = false;
         console.log('User profile data:', action.payload);
-        state.userProfile = action.payload.user;
+        if (action.payload && action.payload.user) {
+          state.userProfile = action.payload.user;
+          state.error = null;
+        } else {
+          state.userProfile = null;
+          state.error = 'User profile data is empty or invalid';
+          console.error('User profile data is empty or invalid:', action.payload);
+        }
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload || 'Failed to fetch user profile';
+        console.error('Failed to fetch user profile:', state.error);
       });
   },
 });

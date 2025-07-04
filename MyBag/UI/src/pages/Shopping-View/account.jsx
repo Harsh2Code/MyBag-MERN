@@ -68,14 +68,20 @@ function ShoppingAccount() {
         {profileLoading ? (
           <p>Loading user profile...</p>
         ) : profileError ? (
-          <p>Error loading profile: {profileError}</p>
-        ) : (
           <>
-            <p><strong>Name:</strong> {userProfile?.name || 'N/A'}</p>
-            <p><strong>Email:</strong> {userProfile?.Email || 'N/A'}</p>
-            <p><strong>Role:</strong> {userProfile?.role || 'N/A'}</p>
-            <p><strong>Account Created At:</strong> {formatDate(userProfile?.createdAt)}</p>
+            <p>Error loading profile: {profileError}</p>
+            <pre>{JSON.stringify(profileError, null, 2)}</pre>
           </>
+        ) : userProfile ? (
+          <>
+            <p><strong>Name:</strong> {userProfile.name || 'N/A'}</p>
+            <p><strong>Email:</strong> {userProfile.Email || 'N/A'}</p>
+            <p><strong>Role:</strong> {userProfile.role || 'N/A'}</p>
+            <p><strong>Account Created At:</strong> {formatDate(userProfile.createdAt)}</p>
+            <pre>User Profile Data: {JSON.stringify(userProfile, null, 2)}</pre>
+          </>
+        ) : (
+          <p>User profile data is not available.</p>
         )}
       </div>
       <div className="container mt-4">
