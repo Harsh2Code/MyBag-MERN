@@ -13,7 +13,7 @@ export const fetchUserProfile = createAsyncThunk(
   'userProfile/fetchUserProfile',
   async (userId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/auth/profile/${userId}`);
+      const response = await axios.get(`${API_BASE_URL}/api/auth/profile/${userId}`, { withCredentials: true });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Error fetching user profile');
