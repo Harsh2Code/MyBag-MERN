@@ -36,6 +36,23 @@ body {
   background-color: #FCFFDB !important;
 }
 
+.Canvas {
+  background-color:rgb(214, 214, 214);
+  border-radius: 20px;
+  padding: 10px;
+  padding-bottom: 40px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.footer{
+  margin-bottom: 0;
+  height: 300px;
+  margin-left: 0px;
+  width: 96vw;
+  background-color: rgb(21, 21, 21);
+  color: white;
+
+}
 
 /*
 Make all icons this color

@@ -31,6 +31,7 @@ function Home() {
 }
 
 import React, { useState, useEffect } from 'react';
+import Footer from './pages/Footer.jsx';
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -77,6 +78,7 @@ function App() {
             <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <Home />
             </CheckAuth>
+            <Footer/>
           </>
         } />
         <Route path="/shop/*" element={

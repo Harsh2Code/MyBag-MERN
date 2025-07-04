@@ -6,7 +6,7 @@ function ShoppingProductTile({ product, handleGetProductDetails, handleAddtoCart
       <div
         onClick={() => handleGetProductDetails(product?._id)}
         className="card d-flex flex-column"
-        style={{ width: "14rem", height: "100%" }}
+        style={{ width: "14rem", height: "100%",marginBottom: "10px"}}
       >
         <div className="position-relative">
           <img

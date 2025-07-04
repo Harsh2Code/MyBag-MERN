@@ -8,6 +8,7 @@ import ShoppingProductTile from "../../Components/shopping/Product-tile";
 import { useNavigate } from "react-router-dom";
 import { addToCart, fetchCartItems } from "../../store/cart-slice/cart-Slice";
 import ProductDetailsDialog from "../../Components/shopping/product-details";
+import Footer from "../Footer.jsx";
 
 import banner1 from "../../assets/banner-1.webp";
 import banner2 from "../../assets/banner-2.webp";
@@ -21,6 +22,7 @@ import { CgAdidas } from "react-icons/cg";
 
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Carousel } from 'bootstrap';
+
 
 
 
@@ -116,13 +118,15 @@ function ShoppingHome() {
     }
   }, []);
 
+
+
   useEffect(() => {
       // Set body and html height and background color to fix layout issue
       document.body.style.minHeight = '100vh';
       document.body.style.backgroundColor = 'white';
       document.documentElement.style.minHeight = '100vh';
       document.documentElement.style.backgroundColor = 'white';
-  
+
       return () => {
         // Cleanup styles on unmount
         document.body.style.minHeight = null;
@@ -131,7 +135,7 @@ function ShoppingHome() {
         document.documentElement.style.backgroundColor = null;
       };
     }, []);
-  
+
 
   return (
     <>
@@ -208,8 +212,10 @@ function ShoppingHome() {
 
   {/* Featured Products */ }
       <section className="py-5">
-        <div className="container text-center">
-          <h2 className="fw-bold mb-4">Featured Products</h2>
+        <div className="container text-center Canvas">
+          <h2 className="fw-bold mt-4 mb-4 " style={{height: "100px", lineHeight: "100px"}}> COLLECTIONS
+            <pre className="d-flex  align-items-center mb-3" style={{height: "2px", width: "100%", border: "4px solid black", borderRadius: "10px"}}></pre>
+          </h2>
           <div className="d-flex flex-wrap justify-content-between">
             {productList && productList.length > 0
               ? productList.map((productItem, index) => (
@@ -230,6 +236,7 @@ function ShoppingHome() {
         setOpen={setOpenDetailsDialog}
         productDetails={productDetails}
       />
+      <Footer />
     </div >
     </>
   );
