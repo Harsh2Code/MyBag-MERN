@@ -213,8 +213,8 @@ function ShoppingHome() {
   {/* Featured Products */ }
       <section className="py-5">
         <div className="container text-center Canvas">
-          <h2 className="fw-bold mt-4 mb-4 " style={{height: "100px", lineHeight: "100px"}}> COLLECTIONS
-            <pre className="d-flex  align-items-center mb-3" style={{height: "2px", width: "100%", border: "4px solid black", borderRadius: "10px"}}></pre>
+          <h2 className="fw-bolder fs-1 lh-lg mt-4 mb-4 " style={{height: "100px", lineHeight: "100px",fontFamily: "MV Boli", }}> COLLECTIONS
+            <pre className="d-flex mt-3 align-items-center mb-3" style={{height: "2px", width: "100%", border: "4px solid grey", borderRadius: "10px"}}></pre>
           </h2>
           <div className="d-flex flex-wrap justify-content-between">
             {productList && productList.length > 0

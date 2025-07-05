@@ -23,7 +23,7 @@ function ShoppingProductTile({ product, handleGetProductDetails, handleAddtoCart
         </div>
         <div className="card-body d-flex flex-column justify-content-between p-2 flex-grow-1">
           <div>
-            <h5 className="card-title mb-1">{product.title}</h5>
+            <h5 className="card-title text-muted text-capitalize text-opacity-50 mb-1">{product.brand}</h5>
             <div className="p-2">
               <h2 className="text-5 font-bold mb-1">{product.title}</h2>
               <div className="d-flex justify-content-between align-items-center mb-1">
