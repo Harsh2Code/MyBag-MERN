@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="mt-auto  footer">
-      <div className="container text-md-left footer">
+      <div className="container-fluid text-md-left ml-0 footer">
         <div className="row text-md-left">
           {/* About Section */}
           <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
@@ -49,7 +49,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr className="mb-4" />
+        <hr className="mb-4 d-flex align-items-center" style={{width: "100%"}}/>
         <div className="row align-items-center">
           <div className="col-md-7 col-lg-8">
             <p>© {new Date().getFullYear()} MyBag. All rights reserved.</p>

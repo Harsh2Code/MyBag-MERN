@@ -149,10 +149,32 @@ function ShoppingHome() {
       <div id="bannerCarousel" className="carousel carousel-fade my-5" data-bs-ride="carousel" data-bs-interval="4000" style={{ maxHeight: "500px", overflow: "hidden" }}>
         <div className="carousel-inner" style={{ height: "500px", overflow: "hidden" }}>
           <div className="carousel-item active" style={{ height: "500px" }}>
-            <img src={banner1} className="d-block w-100" alt="Banner 1" style={{ objectFit: "cover", height: "500px", willChange: "transform" }} />
+            <img
+              src={banner1}
+              className="d-block w-100"
+              alt="Banner 1"
+              style={{ objectFit: "cover", height: "500px", willChange: "transform" }}
+              onClick={() => {
+                const productSection = document.getElementById('productDisplaySection');
+                if (productSection) {
+                  productSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            />
           </div>
           <div className="carousel-item" style={{ height: "500px" }}>
-            <img src={banner2} className="d-block w-100" alt="Banner 2" style={{ objectFit: "cover", height: "500px", willChange: "transform" }} />
+            <img
+              src={banner2}
+              className="d-block w-100"
+              alt="Banner 2"
+              style={{ objectFit: "cover", height: "500px", willChange: "transform" }}
+              onClick={() => {
+                const productSection = document.getElementById('productDisplaySection');
+                if (productSection) {
+                  productSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            />
           </div>
         </div>
       </div>
@@ -211,7 +233,7 @@ function ShoppingHome() {
   </section>
 
   {/* Featured Products */ }
-      <section className="py-5">
+      <section id="productDisplaySection" className="py-5">
         <div className="container text-center Canvas">
           <h2 className="fw-bolder fs-1 lh-lg mt-4 mb-4 " style={{height: "100px", lineHeight: "100px",fontFamily: "MV Boli", }}> COLLECTIONS
             <pre className="d-flex mt-3 align-items-center mb-3" style={{height: "2px", width: "100%", border: "4px solid grey", borderRadius: "10px"}}></pre>
