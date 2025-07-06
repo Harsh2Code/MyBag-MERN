@@ -2,6 +2,7 @@
   min-width: 1280px;
   margin: 0 auto;
   /* padding: 2rem; */
+  padding-top: 60px; /* Height for fixed navbar */
   /* padding-top: 5rem; Account for fixed navbar */
   text-align: center;
   background-color: white;
