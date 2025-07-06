@@ -197,7 +197,7 @@ function ShoppingHome() {
                 handleNavigateToListingPage(categoryItem, "category")
               }
             >
-              <div className="card shadow-sm p-3 d-flex flex-column align-items-center justify-content-center">
+              <div className="card shadow-sm p-3 d-flex flex-column align-items-center justify-content-center" role="button">
                 <IconComponent className="fs-1 mb-3" style={{ color: 'black' }} />
                 <div className="fw-bold">{categoryItem.label}</div>
               </div>
@@ -221,7 +221,7 @@ function ShoppingHome() {
               className="col-md-2 col-sm-4 mb-4"
               onClick={() => handleNavigateToListingPage(brandItem, "brand")}
             >
-              <div className="card shadow-sm p-3 d-flex flex-column align-items-center justify-content-center">
+              <div className="card shadow-sm p-3 d-flex flex-column align-items-center justify-content-center" role="button">
                 <IconComponent className="fs-1 mb-3" style={{ color: 'black' }} />
                 <div className="fw-bold">{brandItem.label}</div>
               </div>
