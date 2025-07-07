@@ -20,6 +20,7 @@ import './App.css';
 import './Components/admin-view/admin-layout.css';
 import { checkAuth } from './store/authSlice/authSlice.js';
 import Queries from './pages/Admin-View/Queries.jsx';
+import LoaderTest from './pages/LoaderTest.jsx';
 
 function Home() {
   return (
@@ -46,9 +47,10 @@ function App() {
     });
   }, [dispatch]);
   
-  if (isLoading || !authChecked) {
-    return <div>Loading...</div>;
-  }
+  // Temporarily bypass loading state for testing loader page
+  // if (isLoading || !authChecked) {
+  //   return <div>Loading...</div>;
+  // }
 
   console.log('App.jsx CheckAuth props:', { user, isAuthenticated });
 
@@ -71,6 +73,16 @@ function App() {
               </main>
             </div>
           </div>
+        } />
+        <Route path="/loader-test" element={
+          <>
+            <Navbar />
+            {/* Temporarily remove CheckAuth to debug routing */}
+            {/* <CheckAuth isAuthenticated={isAuthenticated} user={user}> */}
+              <LoaderTest />
+            {/* </CheckAuth> */}
+            {/* Footer removed as per request */}
+          </>
         } />
         <Route path="/" element={
           <>
