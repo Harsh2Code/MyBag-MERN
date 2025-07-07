@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { addToCart, fetchCartItems } from "../../store/cart-slice/cart-Slice";
 import ProductDetailsDialog from "../../Components/shopping/product-details";
 import Footer from "../Footer.jsx";
+import LoaderMinimalEnhanced from "../../Components/LoaderMinimalEnhanced";
+import { useSelector } from "react-redux";
 
 import banner1 from "../../assets/banner-1.webp";
 import banner2 from "../../assets/banner-2.webp";
@@ -50,6 +52,8 @@ function ShoppingHome() {
   const { productList, productDetails } = useSelector(
     (state) => state.shopProducts
   );
+
+  const isLoading = useSelector((state) => state.shopProducts.isLoading);
 
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
 
@@ -239,16 +243,18 @@ function ShoppingHome() {
             <pre className="d-flex mt-3 align-items-center mb-3" style={{height: "2px", width: "100%", border: "4px solid grey", borderRadius: "10px"}}></pre>
           </h2>
           <div className="d-flex flex-wrap justify-content-between">
-            {productList && productList.length > 0
-              ? productList.map((productItem, index) => (
-                  <ShoppingProductTile
-                    key={productItem._id || index}
-                    handleGetProductDetails={handleGetProductDetails}
-                    product={productItem}
-                    handleAddtoCart={handleAddtoCart}
-                  />
-                ))
-              : null}
+            {isLoading ? (
+              <LoaderMinimalEnhanced />
+            ) : productList && productList.length > 0 ? (
+              productList.map((productItem, index) => (
+                <ShoppingProductTile
+                  key={productItem._id || index}
+                  handleGetProductDetails={handleGetProductDetails}
+                  product={productItem}
+                  handleAddtoCart={handleAddtoCart}
+                />
+              ))
+            ) : null}
           </div>
         </div>
       </section>
