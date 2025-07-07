@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+LoaderMinimal.jsx
+LoaderMinimalEnhanced.jsx
+LoaderMinimalEnhanced.css
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
