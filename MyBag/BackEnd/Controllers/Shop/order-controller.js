@@ -44,6 +44,21 @@ const createOrder = async (req, res) => {
       cartId,
     });
 
+    console.log("createOrder - cartItems:", cartItems);
+    // Reduce totalStock for each product in the order
+    for (const item of cartItems) {
+      console.log("Processing item:", item);
+      const product = await Product.findById(item.productId);
+      if (product) {
+        console.log(`Product before stock update: ${product.title}, stock: ${product.totalStock}`);
+        product.totalStock = Math.max(0, product.totalStock - item.quantity);
+        await product.save();
+        console.log(`Product after stock update: ${product.title}, stock: ${product.totalStock}`);
+      } else {
+        console.log(`Product not found for id: ${item.productId}`);
+      }
+    }
+
     // Save order to database
     await newOrder.save();
 

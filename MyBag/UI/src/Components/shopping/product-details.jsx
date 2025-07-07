@@ -6,7 +6,7 @@ import StarRatingComponent from '../common/star-rating';
 import { Modal, Button, Toast, ToastContainer } from "react-bootstrap";
 import axios from "axios";
 
-function ProductDetailsDialog({ open, setOpen, productDetails }) {
+function ProductDetailsDialog({ open, setOpen, productDetails, onClose }) {
   const [rating, setRating] = useState(0);
   const [reviewMsg, setReviewMsg] = useState("");
   const [reviews, setReviews] = useState([]);
@@ -58,13 +58,13 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     }
     dispatch(
       addToCart({
-        userId: user?.id,
+        userId: user?._id,
         productId: getCurrentProductId,
         quantity: 1,
       })
     ).then((data) => {
       if (data?.payload?.success) {
-        dispatch(fetchCartItems(user?.id));
+        dispatch(fetchCartItems(user?._id));
         setToastMessage("Product is added to cart");
         setShowToast(true);
       }
@@ -75,6 +75,9 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     setOpen(false);
     setRating(0);
     setReviewMsg("");
+    if (onClose) {
+      onClose();
+    }
   }
 
   const handleReviewMsgChange = (e) => {

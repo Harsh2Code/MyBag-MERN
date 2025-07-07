@@ -143,7 +143,8 @@ function ShoppingCheckout() {
             : null}
           <div className="mt-4">
             <div className="d-flex justify-content-between">
-              <span className="fw-bold">Total</span>
+              <span className="fw-bold" style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Total</span>
               <span className="fw-bold">${totalCartAmount}</span>
             </div>
           </div>

@@ -38,18 +38,12 @@ function ShoppingAccount() {
   return (
     <div className="container mt-4" style={{ position: 'relative', paddingTop: '80px' }}>
       <button
+      className='btn btn-dark btn-outline-warning'
         onClick={handleLogout}
         style={{
           position: 'absolute',
           top: '38px',
           right: '10px',
-          backgroundColor: '#333',
-          color: '#fff',
-          border: 'none',
-          padding: '8px 16px',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          zIndex: 1100,
         }}
       >
         Logout
@@ -64,7 +58,8 @@ function ShoppingAccount() {
       </div>
       {/* User Details Section */}
       <div className="container mt-4 p-3 border rounded bg-light">
-        <h4>User Details</h4>
+        <h4 style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>User Details</h4>
         {profileLoading ? (
           <p>Loading user profile...</p>
         ) : profileError ? (
@@ -74,10 +69,14 @@ function ShoppingAccount() {
           </>
         ) : userProfile ? (
           <>
-            <p><strong>Name:</strong> {userProfile.name || 'N/A'}</p>
-            <p><strong>Email:</strong> {userProfile.Email || 'N/A'}</p>
-            <p><strong>Role:</strong> {userProfile.role || 'N/A'}</p>
-            <p><strong>Account Created At:</strong> {formatDate(userProfile.createdAt)}</p>
+            <p><strong style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Name:</strong> {userProfile.name || 'N/A'}</p>
+            <p><strong style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Email:</strong> {userProfile.Email || 'N/A'}</p>
+            <p><strong style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Role:</strong> {userProfile.role || 'N/A'}</p>
+            <p><strong style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Account Created At:</strong> {formatDate(userProfile.createdAt)}</p>
             {/* <pre>User Profile Data: {JSON.stringify(userProfile, null, 2)}</pre> */}
           </>
         ) : (
@@ -93,6 +92,8 @@ function ShoppingAccount() {
               role="tab"
               aria-selected={activeTab === 'orders'}
               onClick={() => setActiveTab('orders')}
+              style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)", color: "black"}}
             >
               Orders
             </button>
@@ -104,6 +105,8 @@ function ShoppingAccount() {
               role="tab"
               aria-selected={activeTab === 'address'}
               onClick={() => setActiveTab('address')}
+              style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)", color : "black"}}
             >
               Address
             </button>
@@ -138,7 +141,8 @@ function ShoppingAccount() {
               className="tab-pane fade show active"
               role="tabpanel"
             >
-              <h5>Your Addresses</h5>
+              <h5 style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Your Addresses</h5>
               {addressesLoading ? (
                 <p>Loading addresses...</p>
               ) : addressList.length === 0 ? (

@@ -13,6 +13,7 @@ import LoaderMinimalEnhanced from "../../Components/LoaderMinimalEnhanced";
 
 import banner1 from "../../assets/banner-1.webp";
 import banner2 from "../../assets/banner-2.webp";
+import { setProductDetails, resetLoading } from "../../store/Shop/Product-Slice/ProductSlice";
 
 import { SlUserFemale } from "react-icons/sl";
 import { GrUserManager } from "react-icons/gr";
@@ -93,6 +94,13 @@ function ShoppingHome() {
   useEffect(() => {
     if (productDetails !== null) setOpenDetailsDialog(true);
   }, [productDetails]);
+
+
+  function handleDialogClose() {
+    setOpenDetailsDialog(false);
+    dispatch(setProductDetails());
+    dispatch(resetLoading());
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -188,7 +196,8 @@ function ShoppingHome() {
   {/* Shop by Category */ }
   <section className="py-5 bg-light">
     <div className="container text-center">
-      <h2 className="fw-bold mb-4">Shop by Category</h2>
+      <h2 className="fw-bold mb-4" style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Shop by Category</h2>
       <div className="row d-flex justify-content-between">
         {categoriesWithIcon.map((categoryItem) => {
           const IconComponent = categoryItem.icon;
@@ -201,7 +210,7 @@ function ShoppingHome() {
               }
             >
               <div className="card shadow-sm p-3 d-flex flex-column align-items-center justify-content-center" role="button">
-                <IconComponent className="fs-1 mb-3" style={{ color: 'black' }} />
+                <IconComponent className="fs-1 mb-3" style={{ color: "rgba(222, 155, 0, 0.8)" }} />
                 <div className="fw-bold">{categoryItem.label}</div>
               </div>
             </div>
@@ -214,7 +223,8 @@ function ShoppingHome() {
   {/* Shop by Brand */ }
   <section className="py-5 bg-light">
     <div className="container text-center">
-      <h2 className="fw-bold mb-4">Shop by Brand</h2>
+      <h2 className="fw-bold mb-4" style={{textDecoration: "underline",
+  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Shop by Brand</h2>
       <div className="row">
         {brandsWithIcon.map((brandItem) => {
           const IconComponent = brandItem.icon;
@@ -225,7 +235,7 @@ function ShoppingHome() {
               onClick={() => handleNavigateToListingPage(brandItem, "brand")}
             >
               <div className="card shadow-sm p-3 d-flex flex-column align-items-center justify-content-center" role="button">
-                <IconComponent className="fs-1 mb-3" style={{ color: 'black' }} />
+                <IconComponent className="fs-1 mb-3" style={{ color: "rgba(222, 155, 0, 0.8)" }} />
                 <div className="fw-bold">{brandItem.label}</div>
               </div>
             </div>
@@ -262,6 +272,7 @@ function ShoppingHome() {
         open={openDetailsDialog}
         setOpen={setOpenDetailsDialog}
         productDetails={productDetails}
+        onClose={handleDialogClose}
       />
       <Footer />
     </div >
