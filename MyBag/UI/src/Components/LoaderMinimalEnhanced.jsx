@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./LoaderMinimalEnhanced.css";
 
-const LoaderMinimalEnhanced = () => {
+const LoaderMinimalEnhanced = ({ isLoading }) => {
+  const [showLoader, setShowLoader] = useState(true);
+  const [minTimePassed, setMinTimePassed] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMinTimePassed(true);
+    }, 3000); // minimum 3 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (minTimePassed && !isLoading) {
+      setShowLoader(false);
+    }
+  }, [minTimePassed, isLoading]);
+
+  if (!showLoader) {
+    return null;
+  }
+
   return (
     <div className="loader-wrapper">
       <div className="body">
