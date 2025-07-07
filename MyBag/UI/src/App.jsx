@@ -20,7 +20,7 @@ import './App.css';
 import './Components/admin-view/admin-layout.css';
 import { checkAuth } from './store/authSlice/authSlice.js';
 import Queries from './pages/Admin-View/Queries.jsx';
-import LoaderTest from './pages/LoaderTest.jsx';
+import LoaderTest from './pages/Shopping-View/LoaderTest.jsx';
 
 function Home() {
   return (

@@ -10,7 +10,6 @@ import { addToCart, fetchCartItems } from "../../store/cart-slice/cart-Slice";
 import ProductDetailsDialog from "../../Components/shopping/product-details";
 import Footer from "../Footer.jsx";
 import LoaderMinimalEnhanced from "../../Components/LoaderMinimalEnhanced";
-import { useSelector } from "react-redux";
 
 import banner1 from "../../assets/banner-1.webp";
 import banner2 from "../../assets/banner-2.webp";
