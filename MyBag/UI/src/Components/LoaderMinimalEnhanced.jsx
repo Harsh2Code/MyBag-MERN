@@ -43,7 +43,7 @@ const LoaderMinimalEnhanced = ({ isLoading }) => {
         <span></span>
         <span></span>
       </div>
-      <h1>Redirecting</h1>
+      <h5>Redirecting</h5>
     </div>
   );
 };
