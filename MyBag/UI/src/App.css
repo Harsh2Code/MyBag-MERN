@@ -49,12 +49,38 @@ body {
 
 .footer{
   margin-bottom: 0;
-  height: 300px;
+  /* height: 300px; */
+  padding: 20px 0;
   margin-left: 0px;
   width: 96vw;
   background-color: rgb(21, 21, 21);
   color: white;
+}
 
+.container-fluid.text-md-left {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.row.text-md-left {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.footer > .container-fluid {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.footer .row {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.footer h5,
+.footer p {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 /*
@@ -67,7 +93,7 @@ svg, i, .icon {
 
 body {
   background-color: #f1c40f;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .body {

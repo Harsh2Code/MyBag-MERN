@@ -2,11 +2,11 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="mt-auto  footer">
-      <div className="container-fluid text-md-left ml-0 footer">
-        <div className="row text-md-left">
+    <footer className="footer">
+      <div className="container-fluid text-md-left ml-0 mb-0">
+        <div className="row text-md-left" style={{marginTop: 0, paddingTop: 0}}>
           {/* About Section */}
-          <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <div className="col-md-3 col-lg-3 col-xl-3">
             <h5 className="text-uppercase mb-4 font-weight-bold text-warning" style={{textDecoration: "underline",
   textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>MyBag</h5>
             <p>
@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <div className="col-md-2 col-lg-2 col-xl-2">
             <h5 className="text-uppercase mb-4 font-weight-bold text-warning" style={{textDecoration: "underline",
   textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Quick Links</h5>
             <p><a href="/shop/listing" className="text-light" style={{ textDecoration: 'none' }}>Shop</a></p>
@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <div className="col-md-4 col-lg-3 col-xl-3">
             <h5 className="text-uppercase mb-4 font-weight-bold text-warning" style={{textDecoration: "underline",
   textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Contact</h5>
             <p><span style={{marginRight: '10px'}}>🏠</span> 123 Fashion St, Style City, USA</p>
@@ -35,22 +35,22 @@ const Footer = () => {
           </div>
 
           {/* Social Media */}
-          <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mt-3">
+          <div className="col-md-3 col-lg-4 col-xl-3">
             <h5 className="text-uppercase mb-4 font-weight-bold text-warning" style={{textDecoration: "underline",
   textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Follow Us</h5>
-            <a href="https://facebook.com" className="text-light me-4" style={{fontSize: '1.5rem'}}>
+            <a href="https://facebook.com" className="text-light" style={{fontSize: '1.5rem'}}>
               <span role="img" aria-label="Facebook">📘</span>
             </a>
             <br />
-            <a href="https://twitter.com" className="text-light me-4" style={{fontSize: '1.5rem'}}>
+            <a href="https://twitter.com" className="text-light" style={{fontSize: '1.5rem'}}>
               <span role="img" aria-label="Twitter">🐦</span>
             </a>
             <br />
-            <a href="https://instagram.com" className="text-light me-4" style={{fontSize: '1.5rem'}}>
+            <a href="https://instagram.com" className="text-light" style={{fontSize: '1.5rem'}}>
               <span role="img" aria-label="Instagram">📸</span>
             </a>
             <br />
-            <a href="https://linkedin.com" className="text-light me-4" style={{fontSize: '1.5rem'}}>
+            <a href="https://linkedin.com" className="text-light" style={{fontSize: '1.5rem'}}>
               <span role="img" aria-label="LinkedIn">🔗</span>
             </a>
             <br />

@@ -132,7 +132,7 @@ function ShoppingCheckout() {
           selectedId={currentSelectedAddress}
           setCurrentSelectedAddress={setCurrentSelectedAddress}
         />
-        <div className="d-flex flex-column gap-3">
+        <div className="d-flex flex-column" style={{maxHeight: '400px', overflowY: 'auto'}}>
           {cartItems && cartItems.items && cartItems.items.length > 0
             ? cartItems.items.map((item) => (
                 <UserCartItemsContent

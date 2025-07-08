@@ -68,7 +68,7 @@ function UserCartItemsContent({ cartItem }) {
   }
 
   return (
-    <div className="d-flex align-items-center mb-3">
+    <div className="d-flex align-items-center">
       <img
         src={cartItem?.image}
         alt={cartItem?.title}

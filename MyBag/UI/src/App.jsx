@@ -56,73 +56,75 @@ function App() {
 
   return (
     <div className="app-container container-fluid min-vh-100" style={{boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1) !important'}}>
-      <Routes>
-        <Route path="/admin/*" element={
-          <div className="admin-layout">
-            <Header className="admin-header" />
-            <div className="admin-content">
-              <Slidebar className="admin-sidebar" />
-              <main className="admin-main">
-                <Routes>
-                  <Route index element={<Navigate to="dashboard" replace />} />
-                  <Route path="dashboard" element={<Dashboard />} />
-                  <Route path="products" element={<Products />} />
-                  <Route path="orders" element={<AdminOrdersView />} /> {/* updated route */}
-                  <Route path="Queries" element={<Queries />} />
-                </Routes>
-              </main>
+      <div className="app-content">
+        <Routes>
+          <Route path="/admin/*" element={
+            <div className="admin-layout">
+              <Header className="admin-header" />
+              <div className="admin-content">
+                <Slidebar className="admin-sidebar" />
+                <main className="admin-main">
+                  <Routes>
+                    <Route index element={<Navigate to="dashboard" replace />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="products" element={<Products />} />
+                    <Route path="orders" element={<AdminOrdersView />} /> {/* updated route */}
+                    <Route path="Queries" element={<Queries />} />
+                  </Routes>
+                </main>
+              </div>
             </div>
-          </div>
-        } />
-        <Route path="/loader-test" element={
-          <>
-            <Navbar />
-            {/* Temporarily remove CheckAuth to debug routing */}
-            {/* <CheckAuth isAuthenticated={isAuthenticated} user={user}> */}
-              <LoaderTest />
-            {/* </CheckAuth> */}
-            {/* Footer removed as per request */}
-          </>
-        } />
-        <Route path="/" element={
-          <>
-            <Navbar />
-            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-              <Home />
-            </CheckAuth>
-            <Footer/>
-          </>
-        } />
-        <Route path="/shop/*" element={
-          <>
-            <Navbar />
-            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-              <Routes>
-                <Route index element={<ShoppingHome />} />
-                <Route path="listing" element={<Listing />} />
-                <Route path="checkout" element={<Checkout />} />
-                <Route path="payment" element={<PaymentReturn />} />
-                <Route path="account" element={<ShoppingAccount />} />
-                <Route path="contact-us" element={<ContactUs />} />
-                <Route path="orders" element={<Orders />} />
-              </Routes>
-            </CheckAuth>
-          </>
-        } />
-        <Route path="/login" element={
-          <>
-            <Navbar />
-            <Login />
-          </>
-        } />
-        <Route path="/register" element={
-          <>
-            <Navbar />
-            <Register />
-          </>
-        } />
-        {!isAuthenticated && <Route path="/admin/*" element={<Navigate to="/login" replace />} />}
-      </Routes>
+          } />
+          <Route path="/loader-test" element={
+            <>
+              <Navbar />
+              {/* Temporarily remove CheckAuth to debug routing */}
+              {/* <CheckAuth isAuthenticated={isAuthenticated} user={user}> */}
+                <LoaderTest />
+              {/* </CheckAuth> */}
+              {/* Footer removed as per request */}
+            </>
+          } />
+          <Route path="/" element={
+            <>
+              <Navbar />
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <Home />
+              </CheckAuth>
+              <Footer/>
+            </>
+          } />
+          <Route path="/shop/*" element={
+            <>
+              <Navbar />
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <Routes>
+                  <Route index element={<ShoppingHome />} />
+                  <Route path="listing" element={<Listing />} />
+                  <Route path="checkout" element={<Checkout />} />
+                  <Route path="payment" element={<PaymentReturn />} />
+                  <Route path="account" element={<ShoppingAccount />} />
+                  <Route path="contact-us" element={<ContactUs />} />
+                  <Route path="orders" element={<Orders />} />
+                </Routes>
+              </CheckAuth>
+            </>
+          } />
+          <Route path="/login" element={
+            <>
+              <Navbar />
+              <Login />
+            </>
+          } />
+          <Route path="/register" element={
+            <>
+              <Navbar />
+              <Register />
+            </>
+          } />
+          {!isAuthenticated && <Route path="/admin/*" element={<Navigate to="/login" replace />} />}
+        </Routes>
+      </div>
     </div>
   );
 }
