@@ -38,7 +38,7 @@ function ShoppingAccount() {
   return (
     <div className="container mt-4" style={{ position: 'relative', paddingTop: '80px' }}>
       <button
-      className='btn btn-dark btn-outline-warning'
+        className='btn btn-dark btn-outline-warning'
         onClick={handleLogout}
         style={{
           position: 'absolute',
@@ -58,8 +58,10 @@ function ShoppingAccount() {
       </div>
       {/* User Details Section */}
       <div className="container mt-4 p-3 border rounded bg-light">
-        <h4 style={{textDecoration: "underline",
-  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>User Details</h4>
+        <h4 style={{
+          textDecoration: "underline",
+          textDecorationColor: "rgba(222, 155, 0, 0.8)"
+        }}>User Details</h4>
         {profileLoading ? (
           <p>Loading user profile...</p>
         ) : profileError ? (
@@ -68,17 +70,26 @@ function ShoppingAccount() {
             <pre>{JSON.stringify(profileError, null, 2)}</pre>
           </>
         ) : userProfile ? (
-          <>
-            <p><strong style={{textDecoration: "underline",
-  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Name:</strong> {userProfile.name || 'N/A'}</p>
-            <p><strong style={{textDecoration: "underline",
-  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Email:</strong> {userProfile.Email || 'N/A'}</p>
-            <p><strong style={{textDecoration: "underline",
-  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Role:</strong> {userProfile.role || 'N/A'}</p>
-            <p><strong style={{textDecoration: "underline",
-  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Account Created At:</strong> {formatDate(userProfile.createdAt)}</p>
-            {/* <pre>User Profile Data: {JSON.stringify(userProfile, null, 2)}</pre> */}
-          </>
+          <table className="table table-bordered table-striped" style={{ width: '50%', textAlign: 'left', margin: "auto" }}>
+            <tbody>
+              <tr>
+                <th style={{ textDecoration: "underline", textDecorationColor: "rgba(222, 155, 0, 0.8)", textAlign: 'left' }}>Name</th>
+                <td style={{ textAlign: 'left' }}>{userProfile.name || 'N/A'}</td>
+              </tr>
+              <tr>
+                <th style={{ textDecoration: "underline", textDecorationColor: "rgba(222, 155, 0, 0.8)", textAlign: 'left' }}>Email</th>
+                <td style={{ textAlign: 'left' }}>{userProfile.Email || 'N/A'}</td>
+              </tr>
+              <tr>
+                <th style={{ textDecoration: "underline", textDecorationColor: "rgba(222, 155, 0, 0.8)", textAlign: 'left' }}>Role</th>
+                <td style={{ textAlign: 'left' }}>{userProfile.role || 'N/A'}</td>
+              </tr>
+              <tr>
+                <th style={{ textDecoration: "underline", textDecorationColor: "rgba(222, 155, 0, 0.8)", textAlign: 'left' }}>Account Created At</th>
+                <td style={{ textAlign: 'left' }}>{formatDate(userProfile.createdAt)}</td>
+              </tr>
+            </tbody>
+          </table>
         ) : (
           <p>User profile data is not available.</p>
         )}
@@ -92,8 +103,10 @@ function ShoppingAccount() {
               role="tab"
               aria-selected={activeTab === 'orders'}
               onClick={() => setActiveTab('orders')}
-              style={{textDecoration: "underline",
-  textDecorationColor: "rgba(222, 155, 0, 0.8)", color: "black"}}
+              style={{
+                textDecoration: "underline",
+                textDecorationColor: "rgba(222, 155, 0, 0.8)", color: "black"
+              }}
             >
               Orders
             </button>
@@ -105,8 +118,10 @@ function ShoppingAccount() {
               role="tab"
               aria-selected={activeTab === 'address'}
               onClick={() => setActiveTab('address')}
-              style={{textDecoration: "underline",
-  textDecorationColor: "rgba(222, 155, 0, 0.8)", color : "black"}}
+              style={{
+                textDecoration: "underline",
+                textDecorationColor: "rgba(222, 155, 0, 0.8)", color: "black"
+              }}
             >
               Address
             </button>
@@ -127,9 +142,15 @@ function ShoppingAccount() {
                 <ul className="list-group">
                   {orderList.map((order) => (
                     <li key={order._id} className="list-group-item">
-                      <strong>Order ID:</strong> {order._id} <br />
-                      <strong>Status:</strong> {order.orderStatus} <br />
-                      <strong>Total:</strong> ${order.totalAmount ? order.totalAmount.toFixed(2) : '0.00'}
+                      <table className='table table-striped' style={{width: "50%", textAlign:"left"}}>
+                        <tr>
+                          <th><strong>Order ID:</strong></th> <td>{order._id}</td>
+                        </tr>
+                        <tr>
+                          <th><strong>Status:</strong></th> <td>{order.orderStatus}</td>
+                        </tr>
+                        <tr><th><strong>Total:</strong></th> <td>${order.totalAmount ? order.totalAmount.toFixed(2) : '0.00'}</td></tr>
+                      </table>
                     </li>
                   ))}
                 </ul>
@@ -141,8 +162,10 @@ function ShoppingAccount() {
               className="tab-pane fade show active"
               role="tabpanel"
             >
-              <h5 style={{textDecoration: "underline",
-  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Your Addresses</h5>
+              <h5 style={{
+                textDecoration: "underline",
+                textDecorationColor: "rgba(222, 155, 0, 0.8)"
+              }}>Your Addresses</h5>
               {addressesLoading ? (
                 <p>Loading addresses...</p>
               ) : addressList.length === 0 ? (
