@@ -48,6 +48,7 @@ function ShoppingProductTile({ product, handleGetProductDetails, handleAddtoCart
                       ? "text-decoration-line-through"
                       : "d-none"
                   } text-lg-start text-muted justify-content-flex-start`}
+                  style={{  textDecorationColor: "rgba(222, 155, 0, 0.8)"}}
                 >
                   ${product.salePrice}
                 </span>
@@ -63,7 +64,7 @@ function ShoppingProductTile({ product, handleGetProductDetails, handleAddtoCart
               e.stopPropagation();
               handleAddtoCart(product?._id);
             }}
-            className="btn btn-dark btn-sm mt-auto"
+            className="btn btn-dark btn-sm m-0"
           >
             <ShoppingCart /> Add to Cart
           </button>

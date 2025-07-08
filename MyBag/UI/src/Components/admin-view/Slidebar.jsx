@@ -68,7 +68,7 @@ function AdminSideBar({ open, setOpen }) {
         <Offcanvas.Header closeButton className="border-bottom justify-content-between">
           <Offcanvas.Title className="d-flex align-items-center gap-2">
             <ChartNoAxesCombined size={40} />
-            <h1 className="text-2xl font-extrabold m-0">Admin Dashboard</h1>
+            <h1 className="text-2xl h1 font-extrabold m-0">Admin</h1>
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
@@ -83,7 +83,7 @@ function AdminSideBar({ open, setOpen }) {
           className="d-flex align-items-center justify-content-center gap-2 mb-4 cursor-pointer"
         >
           <ChartNoAxesCombined size={30} />
-          <h1 className="text-2xl font-extrabold m-0">Admin Dashboard</h1>
+          <h1 className="text-2xl font-extrabold m-0">Admin</h1>
         </div>
         <MenuItems />
       </div>

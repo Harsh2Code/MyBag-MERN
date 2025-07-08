@@ -39,7 +39,7 @@ export default function Dashboard() {
   return (
     <>
       <div className="container-fluid admin-dash" style={{ minHeight: '100vh' }}>
-        <h1>Admin Dashboard</h1>
+        <h1 className='h1 text-2xl font-extrabold' style={{fontSize:"2rem", fontWeight:"600"}}>Admin Dashboard</h1>
         <div className="row mt-4">
           <div className="col-md-4">
             <div className="card">
