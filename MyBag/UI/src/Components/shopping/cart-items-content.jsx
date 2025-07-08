@@ -68,16 +68,15 @@ function UserCartItemsContent({ cartItem }) {
   }
 
   return (
-    <div className="d-flex align-items-center">
+    <div className="d-flex justify-content-around align-items-center">
       <img
         src={cartItem?.image}
         alt={cartItem?.title}
         className="img-thumbnail"
         style={{ width: "80px", height: "80px", objectFit: "cover" }}
       />
-      <div className="flex-grow-1 ms-3">
-        <h5 className="fw-bold">{cartItem?.title}</h5>
-        <div className="d-flex align-items-center gap-2 mt-1">
+      <div className="flex-grow-0 d-flex align-items-center ms-3" style={{height: "100px",width: "100%", borderBottom: "1px Solid grey"}}>
+        <span className="d-flex align-items-center justify-content-around mb-1" style={{width: "70px"}} >
           <Button
             variant="outline-secondary"
             className="rounded-circle p-1"
@@ -98,7 +97,8 @@ function UserCartItemsContent({ cartItem }) {
             <Plus size={16} />
             <span className="visually-hidden">Increase</span>
           </Button>
-        </div>
+        </span>
+        <h5 className="fw-bold h5 ms-5">{cartItem?.title}</h5>
       </div>
       <div className="d-flex flex-column align-items-end ms-3">
         <p className="fw-semibold mb-1">

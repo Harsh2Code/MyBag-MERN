@@ -133,7 +133,7 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
           : null}
       </div>
       <div className="card-header d-flex justify-content-between align-items-center">
-        <h5 className="card-title mb-0">
+        <h5 className="card-title mb-0" style={{marginTop: "3px",}}>
           {currentEditedId !== null ? "Edit Address" : "Add New Address"}
         </h5>
         {!showForm && (

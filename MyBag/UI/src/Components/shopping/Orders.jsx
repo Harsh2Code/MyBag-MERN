@@ -42,7 +42,7 @@ const ShoppingOrders = () => {
   }
 
   return (
-    <div className="card">
+    <div className="card mt-5">
       <div className="card-header">
         <h5 className="card-title">Order History</h5>
       </div>
