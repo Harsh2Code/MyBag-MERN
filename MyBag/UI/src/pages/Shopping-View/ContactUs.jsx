@@ -56,9 +56,10 @@ export default function ContactUs() {
     <div className="container mt-4">
       <h2>Contact Us</h2>
       <form onSubmit={handleSubmit} noValidate>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input
+        <table className='table table-striped table-hover'>
+        <tr className="mb-3 table-hover">
+          <th><label htmlFor="name" className="form-label">Name</label></th>
+          <td><input
             id="name"
             name="name"
             type="text"
@@ -67,11 +68,11 @@ export default function ContactUs() {
             onChange={handleChange}
             disabled={isSubmitting}
             required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
-          <input
+          /></td>
+        </tr>
+        <tr className="mb-3">
+          <th><label htmlFor="email" className="form-label">Email</label></th>
+          <td><input
             id="email"
             name="email"
             type="email"
@@ -80,11 +81,11 @@ export default function ContactUs() {
             onChange={handleChange}
             disabled={isSubmitting}
             required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="subject" className="form-label">Subject</label>
-          <input
+          /></td>
+        </tr>
+        <tr className="mb-3">
+          <th><label htmlFor="subject" className="form-label">Subject</label></th>
+          <td><input
             id="subject"
             name="subject"
             type="text"
@@ -93,11 +94,11 @@ export default function ContactUs() {
             onChange={handleChange}
             disabled={isSubmitting}
             required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="message" className="form-label">Message</label>
-          <textarea
+          /></td>
+        </tr>
+        <tr className="mb-3">
+          <th><label htmlFor="message" className="form-label">Message</label></th>
+          <td><textarea
             id="message"
             name="message"
             className="form-control"
@@ -106,11 +107,16 @@ export default function ContactUs() {
             onChange={handleChange}
             disabled={isSubmitting}
             required
-          />
-        </div>
+          /></td>
+        </tr>
+        <tr>
+          <td>
         <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
+        </td>
+        </tr>
+        </table>
       </form>
       <ToastContainer position="top-right" className="p-3" />
     </div>
