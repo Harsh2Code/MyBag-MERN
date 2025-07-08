@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import CheckAuth from './Components/CheckAuth';
 import Navbar from './Components/Navbar.jsx';
