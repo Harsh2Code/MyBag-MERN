@@ -1,8 +1,23 @@
 import { ShoppingCart } from "lucide-react";
+import { useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ShoppingProductTile({ product, handleGetProductDetails, handleAddtoCart }) {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const handleAddToCartClick = (e) => {
+    e.stopPropagation();
+    if (!isAuthenticated) {
+      toast.info("Only logged-in users can add products");
+      return;
+    }
+    handleAddtoCart(product?._id);
+  };
+
   return (
     <div className="mb-2">
+      <ToastContainer />
       <div
         onClick={() => handleGetProductDetails(product?._id)}
         className="card d-flex flex-column"
@@ -60,10 +75,7 @@ function ShoppingProductTile({ product, handleGetProductDetails, handleAddtoCart
             </div>
           </div>
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              handleAddtoCart(product?._id);
-            }}
+            onClick={handleAddToCartClick}
             className="btn btn-dark btn-sm m-0"
           >
             <ShoppingCart /> Add to Cart
