@@ -135,7 +135,14 @@ const authMiddleware = (req, res, next) => {
 };
 
 const logoutUser = (req, res) => {
-    res.clearCookie('token');
+    const cookieOptions = {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        path: '/'
+    };
+    res.clearCookie('token', cookieOptions);
+    res.clearCookie('refreshToken', { ...cookieOptions, path: '/api/auth/refresh-token' }); // match path used when setting cookie
     return res.status(200).json({
         success: true,
         message: "Logout successful"

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { LogoutUser } from '../store/authSlice/authSlice'; // Correct import with capital L
+import { LogoutUser, resetAuthState } from '../store/authSlice/authSlice'; // Added resetAuthState import
 import { LuSpeech } from "react-icons/lu";
 import { House, ClipboardList,CircleUserRound,ShoppingCart } from "lucide-react";
 
@@ -24,8 +24,10 @@ function Navbar() {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const handleLogout = () => {
-    dispatch(LogoutUser());
+  const handleLogout = async () => {
+    await dispatch(LogoutUser());
+    // Reset auth state explicitly after logout
+    dispatch(resetAuthState());
     navigate('/login');
   };
 
