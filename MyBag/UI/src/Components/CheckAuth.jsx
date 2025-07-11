@@ -18,7 +18,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     }
 
     if (!isAuthenticated) {
-        if (location.pathname.includes('/d') || location.pathname.includes('/register') || location.pathname.includes('/shop')) {
+        if (location.pathname === '/' || location.pathname.includes('/d') || location.pathname.includes('/register') || location.pathname.includes('/shop')) {
             return children;
         }
         return <Navigate to='/login' replace />;
