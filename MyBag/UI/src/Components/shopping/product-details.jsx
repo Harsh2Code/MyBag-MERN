@@ -41,6 +41,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails, onClose }) {
   }
 
   function handleAddToCart(getCurrentProductId, getTotalStock) {
+    console.log("handleAddToCart called with userId:", user?._id, "productId:", getCurrentProductId, "quantity: 1");
     let getCartItems = cartItems.items || [];
 
     if (getCartItems.length) {
@@ -63,11 +64,19 @@ function ProductDetailsDialog({ open, setOpen, productDetails, onClose }) {
         quantity: 1,
       })
     ).then((data) => {
+      console.log("addToCart dispatch result:", data);
       if (data?.payload?.success) {
         dispatch(fetchCartItems(user?._id));
         setToastMessage("Product is added to cart");
         setShowToast(true);
+      } else {
+        setToastMessage("Failed to add product to cart");
+        setShowToast(true);
       }
+    }).catch((error) => {
+      console.error("addToCart dispatch error:", error);
+      setToastMessage("Error adding product to cart");
+      setShowToast(true);
     });
   }
 
