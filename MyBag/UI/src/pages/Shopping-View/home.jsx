@@ -189,16 +189,32 @@ function ShoppingHome() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 767px) {
+          #bannerCarousel {
+            max-height: 300px !important;
+          }
+          #bannerCarousel .carousel-inner {
+            height: 300px !important;
+          }
+          #bannerCarousel .carousel-item {
+            height: 300px !important;
+          }
+          #bannerCarousel img {
+            height: 300px !important;
+          }
+        }
+      `}</style>
 
       {/* Image Slider */}
       {/* Removed manual image slider to avoid conflict with Bootstrap carousel */}
 
   {/* Shop by Category */ }
   <section className="py-5 bg-light">
-    <div className="container text-center">
+    <div className="container-fluid text-center">
       <h2 className="fw-bold mb-4" style={{textDecoration: "underline",
   textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Shop by Category</h2>
-      <div className="row d-flex justify-content-between">
+      <div className="row d-flex justify-content-start flex-wrap">
         {categoriesWithIcon.map((categoryItem) => {
           const IconComponent = categoryItem.icon;
           return (
@@ -222,7 +238,7 @@ function ShoppingHome() {
 
   {/* Shop by Brand */ }
   <section className="py-5 bg-light">
-    <div className="container text-center">
+    <div className="container-fluid text-center">
       <h2 className="fw-bold mb-4" style={{textDecoration: "underline",
   textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Shop by Brand</h2>
       <div className="row">
@@ -247,11 +263,11 @@ function ShoppingHome() {
 
   {/* Featured Products */ }
       <section id="productDisplaySection" className="py-5">
-        <div className="container text-center Canvas">
+        <div className="container-fluid text-center Canvas">
           <h2 className="fw-bolder fs-1 lh-lg mt-4 mb-4 " style={{height: "100px", lineHeight: "100px",fontFamily: "MV Boli", }}> COLLECTIONS
             <pre className="d-flex mt-3 align-items-center mb-3" style={{height: "2px", width: "100%", border: "4px solid grey", borderRadius: "10px"}}></pre>
           </h2>
-          <div className="d-flex flex-wrap justify-content-between">
+          <div className="d-flex flex-wrap justify-content-evenly">
             {isLoading ? (
               <LoaderMinimalEnhanced />
             ) : productList && productList.length > 0 ? (

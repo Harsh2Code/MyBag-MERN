@@ -317,3 +317,57 @@ h1 {
   top: auto;
   color: black;
 }
+
+/* Responsive adjustments for carousel and categories */
+@media (max-width: 767px) {
+  #bannerCarousel {
+    max-height: 300px !important;
+  }
+  #bannerCarousel .carousel-inner {
+    height: 300px !important;
+  }
+  #bannerCarousel .carousel-item {
+    height: 300px !important;
+  }
+  #bannerCarousel img {
+    height: 300px !important;
+  }
+
+  /* Categories and Brands size reduction */
+  .row.d-flex.justify-content-start.flex-wrap {
+    justify-content: flex-start !important;
+  }
+  .col-md-1.col-sm-2.mb-2 {
+    flex: initial !important;
+    max-width: initial !important;
+    margin-bottom: initial !important;
+  }
+  .card.p-2 {
+    padding: initial !important;
+  }
+  .fs-3 {
+    font-size: initial !important;
+  }
+  .fw-bold {
+    font-size: initial !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  #root {
+    min-width: auto;
+    padding: 0 10px;
+  }
+
+  .Canvas {
+    padding: 5px;
+    padding-bottom: 20px;
+  }
+
+  /* Adjust product tile max-width for smaller screens */
+  .card {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
