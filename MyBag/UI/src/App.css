@@ -293,33 +293,8 @@ body {
   }
 }
 
-.loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f1c40f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-h1 {
-  font-family: 'Open Sans';
-  font-weight: 600;
-  font-size: 2rem;
-  text-transform: uppercase;
-  position: static;
-  margin-left: 0;
-  left: auto;
-  top: auto;
-  color: black;
-}
-
 /* Responsive adjustments for carousel and categories */
-@media (max-width: 767px) {
+@media (max-width: 767px), (max-width: 1024px) {
   #bannerCarousel {
     max-height: 300px !important;
   }
@@ -354,7 +329,7 @@ h1 {
 }
 
 /* Responsive adjustments */
-@media (max-width: 767px) {
+@media (max-width: 767px), (max-width: 1024px) {
   #root {
     min-width: auto;
     padding: 0 10px;
@@ -369,5 +344,21 @@ h1 {
   .card {
     max-width: 100% !important;
     width: 100% !important;
+  }
+
+  /* Fix right shift by removing horizontal overflow and margin */
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Increase product card size by 20% */
+  .card.d-flex.flex-column {
+    max-width: 16.8rem !important; /* 14rem * 1.2 */
+  }
+
+  .card.d-flex.flex-column img.card-img-top {
+    height: 360px !important; /* 300px * 1.2 */
   }
 }

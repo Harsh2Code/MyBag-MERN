@@ -16,17 +16,17 @@ function ShoppingProductTile({ product, handleGetProductDetails, handleAddtoCart
   };
 
   return (
-    <div className="mb-2 ms-2" style={{height:"100%", maxWidth: "14rem", width: "100%"}}>
+    <div className="mb-2 ms-2 product-tile-container" style={{height:"100%", maxWidth: "14rem", width: "100%"}}>
       <ToastContainer />
       <div
         onClick={() => handleGetProductDetails(product?._id)}
-        className="card d-flex flex-column"
+        className="card d-flex flex-column product-tile-card"
         style={{ width: "100%", maxWidth: "14rem", height: "100%", marginBottom: "10px" }}
       >
         <div className="position-relative">
           <img
             src={product.image}
-            className="card-img-top"
+            className="card-img-top product-tile-image"
             alt={product.title || "Product image"}
             style={{ objectFit: "cover", height: "300px" }}
           />
