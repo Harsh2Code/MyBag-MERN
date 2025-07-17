@@ -13,11 +13,14 @@ const initialState = {
 
 export const createNewOrder = createAsyncThunk(
   "/order/createNewOrder",
-  async (orderData) => {
+  async (orderData, { dispatch }) => {
     const response = await axios.post(
       `${API_BASE_URL}/api/shop/order/create`,
       orderData
     );
+
+    // After creating new order, refresh the order list
+    dispatch(getAllOrdersByUserId());
 
     return response.data;
   }

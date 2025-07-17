@@ -52,16 +52,11 @@ function Navbar() {
         </button>
 
         {/* House icon as link to /shop */}
-        <Link to="/shop" className="navbar-toggler" aria-label="Go to shop">
+        {/* <Link to="/shop" className="navbar-toggler" aria-label="Go to shop">
           <House size={28} />
-        </Link>
+        </Link> */}
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <sup className='mr-4'> <b>|</b> </sup>  <a href="/shop" className='ml-4' style={{ marginLeft: ' 10px', display: 'inline-flex', color: 'black'}}> <House size={28} /> </a>
-            </li>
-          </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {user ? (
               <>
