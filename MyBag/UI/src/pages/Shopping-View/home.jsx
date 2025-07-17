@@ -214,7 +214,7 @@ function ShoppingHome() {
     <div className="container-fluid text-center">
       <h2 className="fw-bold mb-4" style={{textDecoration: "underline",
   textDecorationColor: "rgba(222, 155, 0, 0.8)"}}>Shop by Category</h2>
-      <div className="row d-flex justify-content-start flex-wrap">
+      <div className="row d-flex justify-content-around flex-wrap">
         {categoriesWithIcon.map((categoryItem) => {
           const IconComponent = categoryItem.icon;
           return (
@@ -250,7 +250,7 @@ function ShoppingHome() {
               className="col-md-2 col-sm-4 mb-4"
               onClick={() => handleNavigateToListingPage(brandItem, "brand")}
             >
-              <div className="card shadow-sm p-3 d-flex flex-column align-items-center justify-content-center" role="button">
+              <div className="card shadow-sm p-3 d-flex flex-column align-items-center justify-content-around" role="button">
                 <IconComponent className="fs-1 mb-3" style={{ color: "rgba(222, 155, 0, 0.8)" }} />
                 <div className="fw-bold">{brandItem.label}</div>
               </div>

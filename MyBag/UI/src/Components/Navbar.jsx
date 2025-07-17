@@ -46,7 +46,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg fixed-top" style={{ backgroundColor: 'white' }}>
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/"><img src="/logo.jpg" width={'60px'} height={'60px'} alt="MY BAG" /></Link>
+        <Link className="navbar-brand" to="/shop"><img src="/logo.jpg" width={'60px'} height={'60px'} alt="MY BAG" /></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
