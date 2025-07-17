@@ -14,13 +14,20 @@ const ShoppingOrders = () => {
 
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
   const [ordersFetched, setOrdersFetched] = useState(false);
+  const { orderId } = useSelector((state) => state.shoppingOrder);
 
   useEffect(() => {
-    if (authChecked && isAuthenticated && user?._id && !ordersFetched) {
+    if (authChecked && isAuthenticated && user?.userId && !ordersFetched) {
       dispatch(getAllOrdersByUserId());
       setOrdersFetched(true);
     }
   }, [authChecked, isAuthenticated, user, ordersFetched, dispatch]);
+
+  useEffect(() => {
+    if (orderId) {
+      dispatch(getAllOrdersByUserId());
+    }
+  }, [orderId, dispatch]);
 
   useEffect(() => {
     if (orderDetails !== null) {
