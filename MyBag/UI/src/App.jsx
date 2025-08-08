@@ -22,15 +22,6 @@ import { checkAuth } from './store/authSlice/authSlice.js';
 import Queries from './pages/Admin-View/Queries.jsx';
 import LoaderTest from './pages/Shopping-View/LoaderTest.jsx';
 
-function Home() {
-  return (
-    <div className="container mt-5">
-      <h1>Welcome to MyApp</h1>
-      <p>Please login or register to continue</p>
-    </div>
-  );
-}
-
 import React, { useState, useEffect } from 'react';
 import Footer from './pages/Footer.jsx';
 function App() {
@@ -86,13 +77,7 @@ function App() {
             </>
           } />
           <Route path="/" element={
-            <>
-              <Navbar />
-              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-                <Home />
-              </CheckAuth>
-              <Footer/>
-            </>
+            <Navigate to="/shop" replace />
           } />
           <Route path="/shop/*" element={
             <>
